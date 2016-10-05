@@ -1,10 +1,23 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>Page Title</title>
-</head>
-<body>
-<h1>This is a Heading </h1>
-<ul>This is a paragraph. </ul>
-</body>
+  <head>
+    <title>Page Title</title>
+  </head>
+  <body>
+    <h1>This is a Heading </h1>
+    <ul>This is a paragraph. </ul>
+
+    <script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyCt21vzwMQozqSirpMkWewElYNy0XMPi-A",
+            authDomain: "bspoker-a0a5c.firebaseapp.com",
+            databaseURL: "https://bspoker-a0a5c.firebaseio.com",
+            storageBucket: "",
+            messagingSenderId: "173303633528"
+        };
+        firebase.initializeApp(config);
+    </script>
+  </body>
 </html>
