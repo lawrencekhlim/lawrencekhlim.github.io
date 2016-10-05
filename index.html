@@ -8,7 +8,7 @@
   </head>
   <body>
     <h1 id = "bigOne"> </h1>
-
+    <h1 id = "cards"> </h1>
 
     <script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script>
     <script type="text/javascript" src="playing_cards/Card.js" ></script>
@@ -36,6 +36,12 @@
         card = new Card("A", "H");
         //document.appendChild(card.createNode());
         node = document.appendChild(card.createNode());
+        window.alert (card.toString());
+        //var elements_cards = document.getElementById('cards');
+        //var dbRef = firebase.database().ref().child('text');
+        //cards.toString().on('value', snap => elements_cards.innerText = snap.val());
+
+
     </script>
   </body>
 
