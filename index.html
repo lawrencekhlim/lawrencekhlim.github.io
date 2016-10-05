@@ -28,13 +28,14 @@
         var dbRef = firebase.database().ref().child('text');
         dbRef.on('value', snap => bigOne.innerText = snap.val());
 
-        var deck, card;
+        var deck, card, node;
 
         deck = new Stack();
         deck.makeDeck(1);
-        card = deck.deal();
-
-        document.appendChild(card.createNode());
+        //card = deck.deal();
+        card = new Card("A", "H");
+        //document.appendChild(card.createNode());
+        node = document.appendChild(card.createNode());
     </script>
   </body>
 
