@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href="playing_cards/cards.css" rel="stylesheet">
+
+    <title>This is a work in progress.</title>
+  </head>
+  <body>
+    <h1 id = "bigOne"> </h1>
+    <h1 id = "cards"> </h1>
+
+    <script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script>
+    <script type="text/javascript" src="playing_cards/Card.js" ></script>
+
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyCt21vzwMQozqSirpMkWewElYNy0XMPi-A",
+            authDomain: "bspoker-a0a5c.firebaseapp.com",
+            databaseURL: "https://bspoker-a0a5c.firebaseio.com",
+            storageBucket: "",
+            messagingSenderId: "173303633528"
+        };
+        firebase.initializeApp(config);
+
+        var bigOne = document.getElementById('bigOne');
+        var dbRef = firebase.database().ref().child('text');
+        dbRef.on('value', snap => bigOne.innerText = snap.val());
+
+        var deck, card, node;
+
+        deck = new Stack();
+        deck.makeDeck(1);
+        //card = deck.deal();
+        card = new Card("A", "H");
+        //document.appendChild(card.createNode());
+        node = document.appendChild(card.createNode());
+
+        var elements_cards = document.getElementById('cards');
+        //var dbRef = firebase.database().ref().child('text');
+        cards.toString().on('value', snap => elements_cards.innerText = snap.val());
+    </script>
+  </body>
+
+</html>
