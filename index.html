@@ -23,6 +23,31 @@
         var dbRef = firebase.database().ref().child('text');
         dbRef.on('value', snap => bigOne.innerText = snap.val());
     </script>
+	<script type="text/javascript" src="playing_cards/Card.js"></script>
+	<script>
+	
+		window.onerror = function(msg, url, linenumber) {
+			alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
+			return true;
+		}
+	
+		var deck, card,node;
+		
+		/*deck = new Stack();
+		deck.makeDeck(1);
+		deck.shuffle();
+		card = deck.deal();
+		*/
+		card = new Card("5","H");
+		alert("FUCK JAVASCRIPT");
+		node = document.body.appendChild(card.createNode());
+		
+		
+		
+		
+		//node.firstChild.style.visibility = "";
+	</script>
+	
   </body>
 
 </html>
