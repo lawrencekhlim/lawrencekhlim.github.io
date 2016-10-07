@@ -14,6 +14,13 @@
         <script type="text/javascript" src="playing_cards/Card.js" ></script>
 
         <script>
+            window.onerror = function(msg, url, linenumber) {
+                alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
+                return true;
+            }
+        </script>
+
+        <script>
             // Initializing cookies
             function setCookie(cname, cvalue, exdays) {
                 var d = new Date();
@@ -86,7 +93,9 @@
 
         <p>
             <script>
-                document.write (card.toString());// This also works
+                firebase.database().ref("users/"+getCookie("username")).set({
+                    card1: "AH"
+                });
             </script>
         </p>
 
