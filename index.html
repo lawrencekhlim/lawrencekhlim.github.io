@@ -1,48 +1,100 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <link href="playing_cards/cards.css" rel="stylesheet">
+    <head>
+        <meta charset="utf-8">
+        <link href="playing_cards/cards.css" rel="stylesheet">
 
-    <title>This is a work in progress.</title>
-  </head>
-  <body>
-    <h1 id = "bigOne"> </h1>
-    <h1 id = "cards"> </h1>
+        <title>This is a work in progress.</title>
+    </head>
+    <body>
+        <h1 id = "bigOne"> </h1>
+        <h1 id = "cards"> </h1>
 
-    <script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script>
-    <script type="text/javascript" src="playing_cards/Card.js" ></script>
+        <script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script>
+        <script type="text/javascript" src="playing_cards/Card.js" ></script>
 
-    <script>
-        // Initialize Firebase
-        var config = {
-            apiKey: "AIzaSyCt21vzwMQozqSirpMkWewElYNy0XMPi-A",
-            authDomain: "bspoker-a0a5c.firebaseapp.com",
-            databaseURL: "https://bspoker-a0a5c.firebaseio.com",
-            storageBucket: "",
-            messagingSenderId: "173303633528"
-        };
-        firebase.initializeApp(config);
+        <script>
+            // Initializing cookies
+            function setCookie(cname, cvalue, exdays) {
+                var d = new Date();
+                d.setTime(d.getTime() + (exdays*24*60*60*1000));
+                var expires = "expires="+d.toUTCString();
+                document.cookie = cname + "=" + cvalue + "; " + expires;
+            }
 
-        var bigOne = document.getElementById('bigOne');
-        var dbRef = firebase.database().ref().child('text');
-        dbRef.on('value', snap => bigOne.innerText = snap.val());
+            function getCookie(cname) {
+                var name = cname + "=";
+                var ca = document.cookie.split(';');
+                for(var i = 0; i < ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') {
+                        c = c.substring(1);
+                    }
+                    if (c.indexOf(name) == 0) {
+                        return c.substring(name.length, c.length);
+                    }
+                }
+                return "";
+            }
 
-        var deck, card, node;
+            function checkCookie() {
+                var user = getCookie("username");
+                if (user != "") {
+                    alert("Welcome again " + user);
+                } else {
+                    user = prompt("Please enter your name:", "");
+                    if (user != "" && user != null) {
+                        setCookie("username", user, 365);
+                    }
+                }
+            }
 
-        deck = new Stack();
-        deck.makeDeck(1);
-        //card = deck.deal();
-        card = new Card("A", "H");
-        //document.appendChild(card.createNode());
-        node = document.appendChild(card.createNode());
-        window.alert (card.toString());
-        //var elements_cards = document.getElementById('cards');
-        //var dbRef = firebase.database().ref().child('text');
-        //cards.toString().on('value', snap => elements_cards.innerText = snap.val());
+            checkCookie();
 
+        </script>
 
-    </script>
-  </body>
+        <script>
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyCt21vzwMQozqSirpMkWewElYNy0XMPi-A",
+                authDomain: "bspoker-a0a5c.firebaseapp.com",
+                databaseURL: "https://bspoker-a0a5c.firebaseio.com",
+                storageBucket: "",
+                messagingSenderId: "173303633528"
+            };
+            firebase.initializeApp(config);
+
+            var bigOne = document.getElementById('bigOne');
+            var dbRef = firebase.database().ref().child('text'); // This is
+            document.write (dbRef.valueOf());
+            dbRef.on('value', snap => bigOne.innerText = snap.val());
+
+            var deck, card, node;
+
+            deck = new Stack();
+            deck.makeDeck(1);
+            //card = deck.deal();
+            card = new Card("A", "H");
+            //document.appendChild(card.createNode());
+            //node = document.appendChild(card.createNode());
+            //window.alert (card.toString()); // This works
+            document.write (card.toString()); // This works
+            //var elements_cards = document.getElementById('cards');
+            //var dbRef = firebase.database().ref().child('text');
+            //cards.toString().on('value', snap => elements_cards.innerText = snap.val());
+        </script>
+
+        <p>
+            <script>
+                document.write (card.toString());// This also works
+            </script>
+        </p>
+
+        <p>
+            <script>
+                document.write (getCookie("username"));
+            </script>
+        </p>
+    </body>
 
 </html>
