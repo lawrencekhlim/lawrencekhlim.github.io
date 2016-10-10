@@ -10,7 +10,7 @@
 
 
 
-        <title>This is bad.</title>
+        <title>FUCK JAVASCRIPT</title>
 
     </head>
 
@@ -27,6 +27,7 @@
             window.onerror = function(msg, url, linenumber) {
 
                 alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
+				alert("FUCK GITHUB IN THE ASS WITH A SPIKEY CACTUS. JAVASCRIPT SHOULD DIE IN A FIRE TOO. FIREBASE NEEDS TO SUCK A DICK.")
 
                 return true;
 
@@ -108,13 +109,9 @@
 
             <script>
 				
-				var cards = ["AH", "5D", "4S"];
-                firebase.database().ref("users/"+getCookie("username")).set({
-
-                    hand:cards
-
-                });
-
+				var cards = ["KH", "8D", "1S"];
+				
+				writeFirebase("users/"+getCookie("username"), "hand", cards);
             </script>
 
         </p>
@@ -125,9 +122,7 @@
 
             <script>
 
-                document.write (getCookie("username"));
-				document.write("\nFUCK GITHUB. JAVASCRIPT SHOULD DIE IN A FIRE TOO. FIREBASE NEEDS TO SUCK A DICK.")
-
+                document.write(getCookie("username"));
             </script>
 
         </p>

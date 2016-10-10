@@ -7,4 +7,24 @@ function openFirebase() {
         messagingSenderId: "173303633528"
     };
     firebase.initializeApp(config);
+	
+
+}
+
+function writeFirebase(folder, pointer, data){
+	
+	firebase.database().ref(folder).set({
+		
+		pointer:data
+	
+	});
+}
+
+function readFirebase(folder, pointer){
+	var info;
+	var getinfo = firebase.database().ref(folder);
+	getinfo.on("value",function(snapshot){
+		info = snapshot.val().pointer;
+	});
+	return info;
 }
