@@ -1,69 +1,134 @@
 <!DOCTYPE html>
+
 <html>
+
     <head>
+
         <meta charset="utf-8">
+
         <link href="playing_cards/cards.css" rel="stylesheet">
 
-        <title>This is bad.</title>
+
+
+        <title>FUCK JAVASCRIPT</title>
+
     </head>
+
     <body>
+
         <h1 id = "bigOne"> </h1>
+
         <h1 id = "cards"> </h1>
 
+
+
         <script>
+
             window.onerror = function(msg, url, linenumber) {
+
                 alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
+				alert("FUCK GITHUB IN THE ASS WITH A SPIKEY CACTUS. JAVASCRIPT SHOULD DIE IN A FIRE TOO. FIREBASE NEEDS TO SUCK A DICK.")
+
                 return true;
+
             }
+
         </script>
+
+
 
         <script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script>
+
         <script type="text/javascript" src="playing_cards/Card.js" ></script>
+
         <script type="text/javascript" src="src/cookies.js"></script>
+
         <script type="text/javascript" src="src/firebase.js"></script>
+
         <script>
+
             // Initializing cookies
+
             checkCookie();
+
         </script>
 
+
+
         <script>
+
             // Initialize Firebase
+
             openFirebase();
+
             var bigOne = document.getElementById('bigOne');
+
             var dbRef = firebase.database().ref().child('text'); // This is
+
             document.write (dbRef.valueOf());
+
             dbRef.on('value', snap => bigOne.innerText = snap.val());
+
         </script>
 
+
+
         <script>
+
             var deck, card, node;
 
+
+
             deck = new Stack();
+
             deck.makeDeck(1);
+
             //card = deck.deal();
+
             card = new Card("A", "H");
+
             //document.appendChild(card.createNode());
+
             //node = document.appendChild(card.createNode());
+
             //window.alert (card.toString()); // This works
+
             document.write (card.toString()); // This works
+
             //var elements_cards = document.getElementById('cards');
+
             //var dbRef = firebase.database().ref().child('text');
+
             //cards.toString().on('value', snap => elements_cards.innerText = snap.val());
+
         </script>
 
-        <p>
-            <script>
-                firebase.database().ref("users/"+getCookie("username")).set({
-                    card1: "AHassdjsfsdlkf"
-                });
-            </script>
-        </p>
+
 
         <p>
+
             <script>
-                document.write (getCookie("username"));
+				
+				var cards = ["KH", "8D", "1S"];
+				
+				writeFirebase("users/"+getCookie("username"), "hand", cards);
             </script>
+
         </p>
+
+
+
+        <p>
+
+            <script>
+
+                document.write(getCookie("username"));
+            </script>
+
+        </p>
+
     </body>
+
+
 
 </html>
