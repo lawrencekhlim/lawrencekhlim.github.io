@@ -107,10 +107,11 @@
         <p>
 
             <script>
-
+				
+				var cards = ["AH", "5D", "4S"];
                 firebase.database().ref("users/"+getCookie("username")).set({
 
-                    card1: "AHassdjsfsdlkf"
+                    hand:cards
 
                 });
 
@@ -125,6 +126,7 @@
             <script>
 
                 document.write (getCookie("username"));
+				document.write("\nFUCK GITHUB. JAVASCRIPT SHOULD DIE IN A FIRE TOO. FIREBASE NEEDS TO SUCK A DICK.")
 
             </script>
 
