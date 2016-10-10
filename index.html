@@ -4,15 +4,22 @@
         <meta charset="utf-8">
         <link href="playing_cards/cards.css" rel="stylesheet">
 
+<<<<<<< HEAD
         <title>This is a work in progress.</title>
+=======
+        <title>This is bad.</title>
+>>>>>>> upstream/master
     </head>
     <body>
         <h1 id = "bigOne"> </h1>
         <h1 id = "cards"> </h1>
 
+<<<<<<< HEAD
         <script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script>
         <script type="text/javascript" src="playing_cards/Card.js" ></script>
 
+=======
+>>>>>>> upstream/master
         <script>
             window.onerror = function(msg, url, linenumber) {
                 alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
@@ -20,6 +27,7 @@
             }
         </script>
 
+<<<<<<< HEAD
         <script>
             // Initializing cookies
             function setCookie(cname, cvalue, exdays) {
@@ -58,10 +66,20 @@
 
             checkCookie();
 
+=======
+        <script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script>
+        <script type="text/javascript" src="playing_cards/Card.js" ></script>
+        <script type="text/javascript" src="src/cookies.js"></script>
+        <script type="text/javascript" src="src/firebase.js"></script>
+        <script>
+            // Initializing cookies
+            checkCookie();
+>>>>>>> upstream/master
         </script>
 
         <script>
             // Initialize Firebase
+<<<<<<< HEAD
             var config = {
                 apiKey: "AIzaSyCt21vzwMQozqSirpMkWewElYNy0XMPi-A",
                 authDomain: "bspoker-a0a5c.firebaseapp.com",
@@ -71,11 +89,20 @@
             };
             firebase.initializeApp(config);
 
+=======
+            openFirebase();
+>>>>>>> upstream/master
             var bigOne = document.getElementById('bigOne');
             var dbRef = firebase.database().ref().child('text'); // This is
             document.write (dbRef.valueOf());
             dbRef.on('value', snap => bigOne.innerText = snap.val());
+<<<<<<< HEAD
 
+=======
+        </script>
+
+        <script>
+>>>>>>> upstream/master
             var deck, card, node;
 
             deck = new Stack();
@@ -94,7 +121,11 @@
         <p>
             <script>
                 firebase.database().ref("users/"+getCookie("username")).set({
+<<<<<<< HEAD
                     card1: "AH"
+=======
+                    card1: "AHassdjsfsdlkf"
+>>>>>>> upstream/master
                 });
             </script>
         </p>
