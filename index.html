@@ -8,8 +8,6 @@
 
         <link href="playing_cards/cards.css" rel="stylesheet">
 
-
-
         <title>FUCK JAVASCRIPT</title>
 
     </head>
@@ -23,16 +21,12 @@
 
 
         <script>
-
             window.onerror = function(msg, url, linenumber) {
-
                 alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
-				alert("FUCK GITHUB IN THE ASS WITH A SPIKEY CACTUS. JAVASCRIPT SHOULD DIE IN A FIRE TOO. FIREBASE NEEDS TO SUCK A DICK.")
-
+				alert("FUCK GITHUB IN THE ASS WITH A SPIKEY CACTUS. JAVASCRIPT SHOULD DIE IN A FIRE TOO.")
+				alert("FIREBASE NEEDS TO SUCK A DICK. OR GO FUCK ITSELF. PREFERABLY BOTH. AT THE SAME TIME")
                 return true;
-
             }
-
         </script>
 
 
@@ -68,9 +62,21 @@
             document.write (dbRef.valueOf());
 
             dbRef.on('value', snap => bigOne.innerText = snap.val());
+			
+			setDealerPassword("The Dank Factor");
 
         </script>
+		
+		<script>
+			var User = function(username, hand, isDealer){
+				this.username = username;
+				this.hand = hand;
+				this.isDealer = isDealer;
+				console.log("The user " + username +" has been created.");
+			};
+			
 
+		</script>
 
 
         <script>
@@ -87,9 +93,9 @@
 
             card = new Card("A", "H");
 
-            //document.appendChild(card.createNode());
+            document.appendChild(card.createNode());
 
-            //node = document.appendChild(card.createNode());
+           // node = document.appendChild(card.createNode());
 
             //window.alert (card.toString()); // This works
 
@@ -109,9 +115,11 @@
 
             <script>
 				
-				var cards = ["KH", "8D", "1S"];
+				var cards = ["QH", "JS", "AH", "KD"];
 				
-				writeFirebase("users/"+getCookie("username"), "hand", cards);
+				var me = new User(getCookie("username"), cards, true);
+				me.writeFirebase();
+				
             </script>
 
         </p>
@@ -128,7 +136,5 @@
         </p>
 
     </body>
-
-
 
 </html>

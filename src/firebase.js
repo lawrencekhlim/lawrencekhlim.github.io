@@ -11,12 +11,10 @@ function openFirebase() {
 
 }
 
-function writeFirebase(folder, pointer, data){
-	
-	firebase.database().ref(folder).set({
-		
-		pointer:data
-	
+
+function setDealerPassword(newPassword){
+	firebase.database().ref("dealer").set({
+		password:newPassword
 	});
 }
 
