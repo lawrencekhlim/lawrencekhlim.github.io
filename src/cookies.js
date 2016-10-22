@@ -1,11 +1,10 @@
-// This code was copied off of w3schools.com website
-// Anyone can use this code according to the above webside
 
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays*24*60*60*1000));
     var expires = "expires="+d.toUTCString();
-    document.cookie = cname + "=" + cvalue + "; " + expires;
+    document.cookie = (""+cname + "=" + cvalue + "; " + expires);
+    console.log(document.cookie);
 }
 
 function getCookie(cname) {
@@ -17,6 +16,7 @@ function getCookie(cname) {
             c = c.substring(1);
         }
         if (c.indexOf(name) == 0) {
+
             return c.substring(name.length, c.length);
         }
     }
@@ -26,7 +26,7 @@ function getCookie(cname) {
 function checkCookie() {
     var user = getCookie("username");
     if (user != "") {
-        alert("Welcome again " + user);
+        alert("Welcome back " + user);
     } else {
         promptUsername();
     }

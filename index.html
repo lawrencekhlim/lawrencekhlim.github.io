@@ -1,69 +1,301 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <link href="playing_cards/cards.css" rel="stylesheet">
 
-        <title>This is bad.</title>
-    </head>
-    <body>
-        <h1 id = "bigOne"> </h1>
-        <h1 id = "cards"> </h1>
+<head>
 
-        <script>
-            window.onerror = function(msg, url, linenumber) {
-                alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
-                return true;
+
+    <meta charset="utf-8">
+    <link href="playing_cards/cards.css" rel="stylesheet">
+    <title>BS Poker</title>
+
+    <script type="text/javascript" src="src/error.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script>
+    <script type="text/javascript" src="playing_cards/Card.js"></script>
+    <script type="text/javascript" src="src/cookies.js"></script>
+    <script type="text/javascript" src="src/firebase.js"></script>
+    <script type="text/javascript" src="src/User.js"></script>
+
+
+
+    <style>
+        td {text-align: center;}
+    </style>
+
+
+    <script>
+        checkCookie();
+        openFirebase();
+        var username = getCookie ("username");
+        console.log (username+ " Gobly Gook");
+        updateConnection (username);
+        var user = new User (username);
+        var maxcards = 6;
+        var maxplayers = 8;
+        var cardsinhand = 0;
+        var allusers = [];
+    </script>
+
+    <script>
+        function translateToCards (hand) {
+            var cards = [];
+            for (var i = 0; i < hand.length; i++) {
+                cards.push (new Card (hand[i].substring(0, hand[i].length-1), hand[i].substring(hand[i].length-1)));
             }
-        </script>
+            return cards;
+        }
+    </script>
 
-        <script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script>
-        <script type="text/javascript" src="playing_cards/Card.js" ></script>
-        <script type="text/javascript" src="src/cookies.js"></script>
-        <script type="text/javascript" src="src/firebase.js"></script>
-        <script>
-            // Initializing cookies
-            checkCookie();
-        </script>
 
-        <script>
-            // Initialize Firebase
-            openFirebase();
-            var bigOne = document.getElementById('bigOne');
-            var dbRef = firebase.database().ref().child('text'); // This is
-            document.write (dbRef.valueOf());
-            dbRef.on('value', snap => bigOne.innerText = snap.val());
-        </script>
+    <script>
+        function updateCards () {
+            cardsinhand = 0;
+            var stringhand = user.getHand();
+            var newhand;
+            if (typeof stringhand != "undefined") {
+                newhand = translateToCards(stringhand);
+            }
+            else {
+            }
+            var element = [];
+            for (var i = 0; i < maxcards; i++) {
 
-        <script>
-            var deck, card, node;
+                element.push(document.getElementById("card" + i));
+                element[i].removeChild(element[i].childNodes[0]);
+                if (newhand[i] == "" || i >= newhand.length) {
+                    var node = document.createTextNode("");
+                    element[i].appendChild(node);
+                }
+                else {
+                    element[i].appendChild(newhand[i].createNode());
+                    cardsinhand++;
+                }
+            }
+        }
+    </script>
 
-            deck = new Stack();
-            deck.makeDeck(1);
-            //card = deck.deal();
-            card = new Card("A", "H");
-            //document.appendChild(card.createNode());
-            //node = document.appendChild(card.createNode());
-            //window.alert (card.toString()); // This works
-            document.write (card.toString()); // This works
-            //var elements_cards = document.getElementById('cards');
-            //var dbRef = firebase.database().ref().child('text');
-            //cards.toString().on('value', snap => elements_cards.innerText = snap.val());
-        </script>
+    <script>
+        function updateStoppage () {
+            var call;
+            readFirebase("call", function(snapshot){
+                call = snapshot.val().currentCall;
+            });
+            var node = document.createTextNode (call);
+            var element = document.getElementById("call1");
+            element.removeChild(element.childNodes[0]);
+            element.appendChild (node);
+            if (call == "" && cardsinhand > 0) {
+                document.getElementById("BSButton").style.visibility = "visible";
+                document.getElementById("SpotButton").style.visibility = "visible";
+            }
+            else {
+                document.getElementById("BSButton").style.visibility = "hidden";
+                document.getElementById("SpotButton").style.visibility = "hidden";
+            }
+        }
+    </script>
 
-        <p>
+    <script>
+        function callBS () {
+            writeFirebase("call", {currentCall:username+" called BS"});
+        }
+        function callSPOTON () {
+            writeFirebase("call", {currentCall:username+" called SPOT ON"});
+        }
+    </script>
+
+
+
+    <script>
+        function checkConnections () {
+            allusers = [];
+            readFirebase ("online/", function (snapshot) {
+                var i = 0;
+                for (k in snapshot.val().online) {
+                    allusers.push (k);
+                    document.getElementById("user"+i).replaceChild(document.createTextNode(k+" : "),
+                            document.getElementById("user"+i).childNodes[0]);
+                    i++;
+                }
+            });
+        }
+    </script>
+
+    <script>
+        // Error in here
+        function checkEveryCard () {
+            for (var i = 0; i < maxplayers; i++) {
+                var tempdoc = document.getElementById("user" + i);
+                if (tempdoc != null) {
+
+                    var text = tempdoc.textContent;
+                    if (text.replace(/\s/g, '') != "" && text.indexOf(':') != -1) {
+                        var handsize;
+
+                        var username = text.substring(0, text.indexOf(':') - 1);
+                        console.log(username);
+                        readFirebase("users/" + username, function (snapshot) {
+                            var playerhands = snapshot.val().hand;
+                            handsize = numCards(playerhands);
+                            while (tempdoc.firstChild) {
+                                tempdoc.removeChild(tempdoc.firstChild);
+                            }
+                            tempdoc.appendChild(document.createTextNode(substr + " : " + handsize));
+                        });
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script>
+        function numCards (hand) {
+            var total = 0;
+            for (d in hand) {
+                if (hand[d].replace(/\s/g, '') != "") {
+                    total++;
+                }
+            }
+            return total;
+        }
+    </script>
+    <script>
+
+        var deck, card1, card2;
+        deck = new Stack();
+        deck.makeDeck(1);
+        deck.shuffle(1);
+
+        card1 = deck.deal().toString();
+        card2 = deck.deal().toString();
+        var cards = [card1, card2];
+        var dict = { hand: cards};
+        writeFirebase ("users/"+username, dict);
+
+    </script>
+
+
+
+
+</head>
+
+<body>
+
+<h1 width="100"> BS Poker </h1> <!-- header-->
+
+<!-- other players-->
+
+<table width="100%" padding="10">
+    <tr>
+
+        <td id="user0" width="12.5%">  </td>
+        <td id="user1" width="12.5%">  </td>
+        <td id="user2" width="12.5%">  </td>
+        <td id="user3" width="12.5%">  </td>
+        <td id="user4" width="12.5%">  </td>
+        <td id="user5" width="12.5%">  </td>
+        <td id="user6" width="12.5%">  </td>
+        <td id="user7" width="12.5%">  </td>
+
+    </tr>
+</table>
+
+
+<script>
+    checkConnections();
+</script>
+
+<script>
+    var u = setInterval(checkEveryCard,5000);
+</script>
+
+<!-- end other players-->
+<hr/>
+
+<!--current call bar -->
+
+<div>
+    <table width="100%">
+        <form> <!-- <tr> -->
+
+            <td>
+                <h1>
+                   <!-- CURRENT CALL -->
+                    <script>
+                        document.write (username);
+                    </script>
+                </h1>
+            </td>
+            <td id="call1">
+
+            </td>
             <script>
-                firebase.database().ref("users/"+getCookie("username")).set({
-                    card1: "AHassdjsfsdlkf"
-                });
+                var y = setInterval(updateStoppage,100);
+                //clearInterval(y);
             </script>
-        </p>
+            <td>
+                <form>
+                    <td>
+                        <button type="button" onclick="callBS()" id="BSButton">  BS </button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="callSPOTON()" id="SpotButton"> SPOT ON </button>
+                    </td>
 
-        <p>
+                </form>
+            </td>
+        <tr>
+
+    </table>
+</div>
+
+<!--end -->
+
+
+<div>
+    <table width="100%">
+        <tr>
+
+            <td id="card0">
+            </td>
+            <td id="card1">
+            </td>
+            <td id="card2">
+            </td>
+            <td id="card3">
+            </td>
+            <td id="card4">
+
+            </td>
+            <td id="card5">
+
+            </td>
+
             <script>
-                document.write (getCookie("username"));
+                updateCards();
             </script>
-        </p>
-    </body>
+
+            <script>
+
+                var t = setInterval(updateCards,1000);
+                //clearInterval(t);
+            </script>
+
+        </tr>
+
+
+    </table>
+
+    <script>
+
+    </script>
+</div>
+
+
+</body>
+
+
+
+
 
 </html>

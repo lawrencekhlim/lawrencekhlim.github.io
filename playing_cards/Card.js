@@ -26,6 +26,16 @@ function Card(rank, suit) {
   this.createNode = cardCreateNode;
 }
 
+/*
+function stringToRank(rankandsuit) {
+  return rankandsuit.charAt(0);
+}
+
+function stringToSuit (rankandsuit) {
+  return rankandsuit.charAt(1);
+}
+*/
+
 //-----------------------------------------------------------------------------
 // cardToString(): Returns the name of a card (including rank and suit) as a
 // text string.
@@ -101,18 +111,28 @@ function cardToString() {
   if (rank == null || suit == null)
     return "";
 
-  return rank + " of " + suit;
+  //return rank + " of " + suit;
+  return String(this.rank+""+this.suit);
 }
 
 //-----------------------------------------------------------------------------
 // cardCreateNode(): Returns a DIV node which can be used to display the card 
 // on a page.
 //-----------------------------------------------------------------------------
-
-var cardImg0 = new Image(); cardImg0.src= "graphics/cardback.gif";
-var cardImg1 = new Image(); cardImg1.src= "graphics/jack.gif";
-var cardImg2 = new Image(); cardImg2.src= "graphics/queen.gif";
-var cardImg3 = new Image(); cardImg3.src= "graphics/king.gif";
+try {
+  var cardImg0 = new Image();
+  cardImg0.src = "playing_cards/graphics/cardback.gif";
+  var cardImg1 = new Image();
+  cardImg1.src = "playing_cards/graphics/jack.gif";
+  var cardImg2 = new Image();
+  cardImg2.src = "playing_cards/graphics/queen.gif";
+  var cardImg3 = new Image();
+  cardImg3.src = "playing_cards/graphics/king.gif";
+} catch (err) {
+  console.error("The Card Images did not import correctly. plz halp");
+  console.log (err);
+  alert (err);
+}
 
 function cardCreateNode() {
 
@@ -238,19 +258,18 @@ function cardCreateNode() {
   }
 
   // For face cards (Jack, Queen or King), create and add the proper image.
-
   tempNode = document.createElement("IMG");
   tempNode.className = "face";
   if (this.rank == "J")
-    tempNode.src = "graphics/jack.gif";
+    tempNode.src = "playing_cards/graphics/jack.gif";
   if (this.rank == "Q")
-    tempNode.src = "graphics/queen.gif";
+    tempNode.src = "playing_cards/graphics/queen.gif";
   if (this.rank == "K")
-    tempNode.src = "graphics/king.gif";
+    tempNode.src = "playing_cards/graphics/king.gif";
 
   // For face cards, add suit characters to the upper-left and lower-right
   // corners.
-
+try {
   if (this.rank == "J" || this.rank == "Q" || this.rank == "K") {
     frontNode.appendChild(tempNode);
     spotNode.className = "spotA1";
@@ -260,7 +279,9 @@ function cardCreateNode() {
     tempNode = spotNode.cloneNode(true);
     frontNode.appendChild(tempNode);
   }
-
+} catch (err) {
+  console.log (err);
+}
   // Add front node to the card node.
 
   cardNode.appendChild(frontNode);
