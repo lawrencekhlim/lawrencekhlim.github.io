@@ -93,14 +93,12 @@
             if (call == "" && cardsinhand > 0) {
                 document.getElementById("BSButton").style.visibility = "visible";
                 document.getElementById("SpotButton").style.visibility = "visible";
+                clearCards ();
             }
             else {
                 document.getElementById("BSButton").style.visibility = "hidden";
                 document.getElementById("SpotButton").style.visibility = "hidden";
-
-                // A method goes here
-                // Unfinished
-
+                getEveryCard();
             }
         }
     </script>
@@ -115,36 +113,64 @@
     </script>
 
     <script>
-        /*
-        function getEveryCard () {
-            readFirebase ("/", function (snapshot) {
-                var snap = snapshot.val().online.currentusers;
-                var i = 0;
-                for (k in snap) {
-                    //console.log (k);
-                    //console.log (snap[k]);
-                    if (snapshot.val().currentusers[k] == true) {
 
-                        allusers.push(k);
-                        var myNode = document.getElementById("user" + i);
-                        while (myNode.firstChild) {
-                            myNode.removeChild(myNode.firstChild);
+        function getEveryCard () {
+            var cardtotal = 0;
+            for (var i = 0; i < maxplayers; i++) {
+                var tempdoc = document.getElementById("user" + i);
+                if (tempdoc != null) {
+
+                    var text = tempdoc.textContent;
+                    if (text.indexOf(':') != -1) {
+                        //console.log (text);
+                        var handsize;
+
+                        var tempusername = text.substring(0, text.indexOf(':') - 1);
+                        //console.log(tempusername);
+                        readFirebase("users/" + tempusername, function (snapshot) {
+                            var playerhands = snapshot.val().hand;
+                            handsize = numCards(playerhands);
+                            var cardhand = translateToCards(playerhands);
+                            for (var cardnum = 0; cardnum < handsize; cardnum++) {
+                                var myNode = document.getElementById("card0" + cardtotal);
+                                while (myNode.firstChild) {
+                                    myNode.removeChild(myNode.firstChild);
+                                }
+                                myNode.appendChild(cardhand[cardnum].createNode());
+                                cardtotal++;
+                            }
+                        });
+                    }
+                    else {
+                        while (tempdoc.firstChild) {
+                            tempdoc.removeChild(tempdoc.firstChild);
                         }
-                        myNode.appendChild(document.createTextNode(k + " : "));
-                        i++;
                     }
                 }
-                while (i < maxplayers) {
-                    var myNode = document.getElementById("user" + i);
-                    while (myNode.firstChild) {
-                        myNode.removeChild(myNode.firstChild);
-                    }
-                    i++;
+            }
+            while (cardtotal < 52) {
+                var myNode = document.getElementById("card0" + i);
+                while (myNode.firstChild) {
+                    myNode.removeChild(myNode.firstChild);
                 }
-            });
+                cardtotal++;
+            }
         }
-        */
+
     </script>
+
+    <script>
+        function clearCards () {
+            for (var cardtotal = 0; cardtotal < 52; cardtotal++) {
+                var myNode = document.getElementById("card0" + cardtotal);
+                while (myNode.firstChild) {
+                    console.log (myNode.firstChild);
+                    myNode.removeChild(myNode.firstChild);
+                }
+            }
+        }
+    </script>
+
 
 
 
@@ -348,7 +374,7 @@
 </div>
 
 <!-- Everyone's cards -->
-<div>
+<div style="clear:both;">
     <table width="100%">
         <tr>
 
@@ -357,27 +383,27 @@
             <td id="card04"></td><td id="card05"></td>
             <td id="card06"></td><td id="card07"></td>
             <td id="card08"></td><td id="card09"></td>
-            <td id="card10"></td><td id="card11"></td>
-            <td id="card12"></td><td id="card13"></td>
-            <td id="card14"></td><td id="card15"></td>
-            <td id="card16"></td><td id="card17"></td>
-            <td id="card18"></td><td id="card19"></td>
-            <td id="card20"></td><td id="card21"></td>
-            <td id="card22"></td><td id="card23"></td>
-            <td id="card24"></td><td id="card25"></td>
-            <td id="card26"></td><td id="card27"></td>
-            <td id="card28"></td><td id="card29"></td>
-            <td id="card30"></td><td id="card31"></td>
-            <td id="card32"></td><td id="card33"></td>
-            <td id="card34"></td><td id="card35"></td>
-            <td id="card36"></td><td id="card37"></td>
-            <td id="card38"></td><td id="card39"></td>
-            <td id="card40"></td><td id="card41"></td>
-            <td id="card42"></td><td id="card43"></td>
-            <td id="card44"></td><td id="card45"></td>
-            <td id="card46"></td><td id="card47"></td>
-            <td id="card48"></td><td id="card49"></td>
-            <td id="card50"></td><td id="card51"></td>
+            <td id="card010"></td><td id="card011"></td>
+            <td id="card012"></td><td id="card013"></td>
+            <td id="card014"></td><td id="card015"></td>
+            <td id="card016"></td><td id="card017"></td>
+            <td id="card018"></td><td id="card019"></td>
+            <td id="card020"></td><td id="card021"></td>
+            <td id="card022"></td><td id="card023"></td>
+            <td id="card024"></td><td id="card025"></td>
+            <td id="card026"></td><td id="card027"></td>
+            <td id="card028"></td><td id="card029"></td>
+            <td id="card030"></td><td id="card031"></td>
+            <td id="card032"></td><td id="card033"></td>
+            <td id="card034"></td><td id="card035"></td>
+            <td id="card036"></td><td id="card037"></td>
+            <td id="card038"></td><td id="card039"></td>
+            <td id="card040"></td><td id="card041"></td>
+            <td id="card042"></td><td id="card043"></td>
+            <td id="card044"></td><td id="card045"></td>
+            <td id="card046"></td><td id="card047"></td>
+            <td id="card048"></td><td id="card049"></td>
+            <td id="card050"></td><td id="card051"></td>
 
 
             <script>
