@@ -34,10 +34,10 @@ function updateConnection (username) {
         if (snap.val() === true) {
             // We're connected (or reconnected)! Do anything here that should happen only if online (or on reconnect)
             readFirebase ("online/", function (snapshot) {
-                var onlinedictionary = snapshot.val().currentuser;
+                var onlinedictionary = snapshot.val().currentusers;
                 onlinedictionary [username] = true;
-                console.log (onlinedictionary);
-                writeFirebase ("online/", {currentuser:onlinedictionary});
+                //console.log (onlinedictionary);
+                writeFirebase ("online/", {currentusers:onlinedictionary});
             });
         }
     });
@@ -46,9 +46,10 @@ function updateConnection (username) {
 
 function offConnection (username) {
     readFirebase ("online/", function (snapshot) {
-        var onlinedictionary = snapshot.val().currentuser;
+        var onlinedictionary = snapshot.val().currentusers;
+        //console.log (onlinedictionary);
         onlinedictionary[username] = false;
-        firebase.database().ref("online/").onDisconnect().set({currentuser:onlinedictionary});
+        firebase.database().ref("online/").onDisconnect().set({currentusers:onlinedictionary});
         firebase.database().ref("users/"+username+"/dealer").onDisconnect().set({"isDealer":false});
     });
 }
