@@ -27,7 +27,7 @@
         checkCookie();
         openFirebase();
         var username = getCookie ("username");
-        console.log (username+ " Gobly Gook");
+        //console.log (username+ " Gobly Gook");
         updateConnection (username);
         var user = new User (username);
         var maxcards = 6;
@@ -61,7 +61,10 @@
             for (var i = 0; i < maxcards; i++) {
 
                 element.push(document.getElementById("card" + i));
-                element[i].removeChild(element[i].childNodes[0]);
+                //element[i].removeChild(element[i].childNodes[0]);
+                while (element[i].firstChild) {
+                    element[i].removeChild(element[i].firstChild);
+                }
                 if (newhand[i] == "" || i >= newhand.length) {
                     var node = document.createTextNode("");
                     element[i].appendChild(node);
@@ -79,11 +82,14 @@
             var call;
             readFirebase("call", function(snapshot){
                 call = snapshot.val().currentCall;
+                var node = document.createTextNode (call);
+                var element = document.getElementById("call1");
+                while (element.firstChild) {
+                    element.removeChild(element.firstChild);
+                }
+                element.appendChild (node);
             });
-            var node = document.createTextNode (call);
-            var element = document.getElementById("call1");
-            element.removeChild(element.childNodes[0]);
-            element.appendChild (node);
+
             if (call == "" && cardsinhand > 0) {
                 document.getElementById("BSButton").style.visibility = "visible";
                 document.getElementById("SpotButton").style.visibility = "visible";
@@ -91,6 +97,10 @@
             else {
                 document.getElementById("BSButton").style.visibility = "hidden";
                 document.getElementById("SpotButton").style.visibility = "hidden";
+
+                // A method goes here
+                // Unfinished
+
             }
         }
     </script>
@@ -104,20 +114,69 @@
         }
     </script>
 
+    <script>
+        /*
+        function getEveryCard () {
+            readFirebase ("/", function (snapshot) {
+                var snap = snapshot.val().online.currentusers;
+                var i = 0;
+                for (k in snap) {
+                    //console.log (k);
+                    //console.log (snap[k]);
+                    if (snapshot.val().currentusers[k] == true) {
+
+                        allusers.push(k);
+                        var myNode = document.getElementById("user" + i);
+                        while (myNode.firstChild) {
+                            myNode.removeChild(myNode.firstChild);
+                        }
+                        myNode.appendChild(document.createTextNode(k + " : "));
+                        i++;
+                    }
+                }
+                while (i < maxplayers) {
+                    var myNode = document.getElementById("user" + i);
+                    while (myNode.firstChild) {
+                        myNode.removeChild(myNode.firstChild);
+                    }
+                    i++;
+                }
+            });
+        }
+        */
+    </script>
+
 
 
     <script>
         function checkConnections () {
             allusers = [];
             readFirebase ("online/", function (snapshot) {
+                var snap = snapshot.val().currentusers;
                 var i = 0;
-                for (k in snapshot.val().online) {
-                    allusers.push (k);
-                    document.getElementById("user"+i).replaceChild(document.createTextNode(k+" : "),
-                            document.getElementById("user"+i).childNodes[0]);
+                for (k in snap) {
+                    //console.log (k);
+                    //console.log (snap[k]);
+                    if (snapshot.val().currentusers[k] == true) {
+
+                        allusers.push(k);
+                        var myNode = document.getElementById("user" + i);
+                        while (myNode.firstChild) {
+                            myNode.removeChild(myNode.firstChild);
+                        }
+                        myNode.appendChild(document.createTextNode(k + " : "));
+                        i++;
+                    }
+                }
+                while (i < maxplayers) {
+                    var myNode = document.getElementById("user" + i);
+                    while (myNode.firstChild) {
+                        myNode.removeChild(myNode.firstChild);
+                    }
                     i++;
                 }
             });
+            checkEveryCard();
         }
     </script>
 
@@ -129,19 +188,25 @@
                 if (tempdoc != null) {
 
                     var text = tempdoc.textContent;
-                    if (text.replace(/\s/g, '') != "" && text.indexOf(':') != -1) {
+                    if (text.indexOf(':') != -1) {
+                        //console.log (text);
                         var handsize;
 
-                        var username = text.substring(0, text.indexOf(':') - 1);
-                        console.log(username);
-                        readFirebase("users/" + username, function (snapshot) {
+                        var tempusername = text.substring(0, text.indexOf(':') - 1);
+                        //console.log(tempusername);
+                        readFirebase("users/" + tempusername, function (snapshot) {
                             var playerhands = snapshot.val().hand;
                             handsize = numCards(playerhands);
                             while (tempdoc.firstChild) {
                                 tempdoc.removeChild(tempdoc.firstChild);
                             }
-                            tempdoc.appendChild(document.createTextNode(substr + " : " + handsize));
+                            tempdoc.appendChild(document.createTextNode(tempusername + " : " + handsize));
                         });
+                    }
+                    else {
+                        while (tempdoc.firstChild) {
+                            tempdoc.removeChild(tempdoc.firstChild);
+                        }
                     }
                 }
             }
@@ -159,6 +224,7 @@
             return total;
         }
     </script>
+
     <script>
 
         var deck, card1, card2;
@@ -169,7 +235,7 @@
         card1 = deck.deal().toString();
         card2 = deck.deal().toString();
         var cards = [card1, card2];
-        var dict = { hand: cards};
+        var dict = { hand: cards };
         writeFirebase ("users/"+username, dict);
 
     </script>
@@ -206,7 +272,8 @@
 </script>
 
 <script>
-    var u = setInterval(checkEveryCard,5000);
+    var u = setInterval(checkConnections,30);
+    //var v = setInterval(checkEveryCard,30);
 </script>
 
 <!-- end other players-->
@@ -230,6 +297,7 @@
 
             </td>
             <script>
+                //updateStoppage();
                 var y = setInterval(updateStoppage,100);
                 //clearInterval(y);
             </script>
@@ -256,20 +324,12 @@
     <table width="100%">
         <tr>
 
-            <td id="card0">
-            </td>
-            <td id="card1">
-            </td>
-            <td id="card2">
-            </td>
-            <td id="card3">
-            </td>
-            <td id="card4">
-
-            </td>
-            <td id="card5">
-
-            </td>
+            <td id="card0"></td>
+            <td id="card1"></td>
+            <td id="card2"></td>
+            <td id="card3"></td>
+            <td id="card4"></td>
+            <td id="card5"></td>
 
             <script>
                 updateCards();
@@ -285,7 +345,51 @@
 
 
     </table>
+</div>
 
+<!-- Everyone's cards -->
+<div>
+    <table width="100%">
+        <tr>
+
+            <td id="card00"></td><td id="card01"></td>
+            <td id="card02"></td><td id="card03"></td>
+            <td id="card04"></td><td id="card05"></td>
+            <td id="card06"></td><td id="card07"></td>
+            <td id="card08"></td><td id="card09"></td>
+            <td id="card10"></td><td id="card11"></td>
+            <td id="card12"></td><td id="card13"></td>
+            <td id="card14"></td><td id="card15"></td>
+            <td id="card16"></td><td id="card17"></td>
+            <td id="card18"></td><td id="card19"></td>
+            <td id="card20"></td><td id="card21"></td>
+            <td id="card22"></td><td id="card23"></td>
+            <td id="card24"></td><td id="card25"></td>
+            <td id="card26"></td><td id="card27"></td>
+            <td id="card28"></td><td id="card29"></td>
+            <td id="card30"></td><td id="card31"></td>
+            <td id="card32"></td><td id="card33"></td>
+            <td id="card34"></td><td id="card35"></td>
+            <td id="card36"></td><td id="card37"></td>
+            <td id="card38"></td><td id="card39"></td>
+            <td id="card40"></td><td id="card41"></td>
+            <td id="card42"></td><td id="card43"></td>
+            <td id="card44"></td><td id="card45"></td>
+            <td id="card46"></td><td id="card47"></td>
+            <td id="card48"></td><td id="card49"></td>
+            <td id="card50"></td><td id="card51"></td>
+
+
+            <script>
+
+                //var t = setInterval(updateCards,1000);
+                //clearInterval(t);
+            </script>
+
+        </tr>
+
+
+    </table>
     <script>
 
     </script>
