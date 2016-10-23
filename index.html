@@ -253,14 +253,15 @@
 
     <script>
 
-        var deck, card1, card2;
+        var deck, cards;
         deck = new Stack();
         deck.makeDeck(1);
         deck.shuffle(1);
-
-        card1 = deck.deal().toString();
-        card2 = deck.deal().toString();
-        var cards = [card1, card2];
+        cards = [];
+        for (var i = 0; i < 4; i++)
+        {
+            cards.push (deck.deal().toString());
+        }
         var dict = { hand: cards };
         writeFirebase ("users/"+username, dict);
 
