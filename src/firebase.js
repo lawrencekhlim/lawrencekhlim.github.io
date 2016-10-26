@@ -51,5 +51,6 @@ function offConnection (username) {
         onlinedictionary[username] = false;
         firebase.database().ref("online/").onDisconnect().set({currentusers:onlinedictionary});
         firebase.database().ref("users/"+username+"/dealer").onDisconnect().set({"isDealer":false});
+        firebase.database().ref("dealer").onDisconnect().set({"player":""});
     });
 }
