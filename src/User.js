@@ -4,6 +4,7 @@
 
 function User (username) {
     this.username = username;
+    this.isDealer = false;
     console.log ("The user "+username+" has been created.");
 
     this.setDealer = setDealer;
@@ -20,9 +21,12 @@ function setUsername (username) {
 
 
 function checkDealer (list) {
-
+    readFirebase("dealer/", function(snapshot){
+        newhand = snapshot.val().player;
+    });
 }
 
+function isPlayerDealer () { return isDealer; }
 
 
 function setDealer (isDealer) { this.isDealer = isDealer; };
@@ -49,16 +53,16 @@ function dealHand (dictionary) {
     for (var key in dictionary) {
         hand = [];
         for (var i = 0; i < dictionary[key]; i++) {
-            hand.append(deck.deal());
+            hand.push(deck.deal().toString());
         }
         if (this.username == key) {
             dict = {
-                "hand":deck, "isDealer":true
+                "hand":hand, "isDealer":true
             }
         }
         else {
             dict = {
-                "hand":deck, "isDealer":false
+                "hand":hand, "isDealer":false
             }
         }
         writeFirebase ("users/"+key, dict);
