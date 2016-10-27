@@ -55,6 +55,9 @@ function dealHand (dictionary) {
         for (var i = 0; i < dictionary[key]; i++) {
             hand.push(deck.deal().toString());
         }
+        if (dictionary[key] == 0) {
+            hand.push ("");
+        }
         if (this.username == key) {
             dict = {
                 "hand":hand, "isDealer":true
