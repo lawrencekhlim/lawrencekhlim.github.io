@@ -15,7 +15,7 @@
     <script type="text/javascript" src="src/cookies.js"></script>
     <script type="text/javascript" src="src/firebase.js"></script>
     <script type="text/javascript" src="src/User.js"></script>
-
+	<script type="text/javascript" src="src/update.js"></script>
 
 
     <style>
@@ -24,235 +24,11 @@
 
 
     <script>
-        checkCookie();
-        openFirebase();
-        var username = getCookie ("username");
-        //console.log (username+ " Gobly Gook");
-        updateConnection (username);
-        var user = new User (username);
-        var maxcards = 6;
-        var maxplayers = 8;
-        var cardsinhand = 0;
-        var allusers = [];
-    </script>
-
-    <script>
-        function translateToCards (hand) {
-            var cards = [];
-            for (var i = 0; i < hand.length; i++) {
-                cards.push (new Card (hand[i].substring(0, hand[i].length-1), hand[i].substring(hand[i].length-1)));
-            }
-            return cards;
-        }
-    </script>
-
-
-    <script>
-        function updateCards () {
-            cardsinhand = 0;
-            var stringhand = user.getHand();
-            var newhand;
-            if (typeof stringhand != "undefined") {
-                newhand = translateToCards(stringhand);
-            }
-            else {
-            }
-            var element = [];
-            for (var i = 0; i < maxcards; i++) {
-
-                element.push(document.getElementById("card" + i));
-                //element[i].removeChild(element[i].childNodes[0]);
-                while (element[i].firstChild) {
-                    element[i].removeChild(element[i].firstChild);
-                }
-                if (newhand[i] == "" || i >= newhand.length) {
-                    var node = document.createTextNode("");
-                    element[i].appendChild(node);
-                }
-                else {
-                    element[i].appendChild(newhand[i].createNode());
-                    cardsinhand++;
-                }
-            }
-        }
-    </script>
-
-    <script>
-        function updateStoppage () {
-            var call;
-            readFirebase("call", function(snapshot){
-                call = snapshot.val().currentCall;
-                var node = document.createTextNode (call);
-                var element = document.getElementById("call1");
-                while (element.firstChild) {
-                    element.removeChild(element.firstChild);
-                }
-                element.appendChild (node);
-            });
-
-            if (call == "" && cardsinhand > 0) {
-                document.getElementById("BSButton").style.visibility = "visible";
-                document.getElementById("SpotButton").style.visibility = "visible";
-                clearCards ();
-            }
-            else {
-                document.getElementById("BSButton").style.visibility = "hidden";
-                document.getElementById("SpotButton").style.visibility = "hidden";
-                getEveryCard();
-            }
-        }
-    </script>
-
-    <script>
-        function callBS () {
-            writeFirebase("call", {currentCall:username+" called BS"});
-        }
-        function callSPOTON () {
-            writeFirebase("call", {currentCall:username+" called SPOT ON"});
-        }
-    </script>
-
-    <script>
-
-        function getEveryCard () {
-            var cardtotal = 0;
-            for (var i = 0; i < maxplayers; i++) {
-                var tempdoc = document.getElementById("user" + i);
-                if (tempdoc != null) {
-
-                    var text = tempdoc.textContent;
-                    if (text.indexOf(':') != -1) {
-                        //console.log (text);
-                        var handsize;
-
-                        var tempusername = text.substring(0, text.indexOf(':') - 1);
-                        //console.log(tempusername);
-                        readFirebase("users/" + tempusername, function (snapshot) {
-                            var playerhands = snapshot.val().hand;
-                            handsize = numCards(playerhands);
-                            var cardhand = translateToCards(playerhands);
-                            for (var cardnum = 0; cardnum < handsize; cardnum++) {
-                                var myNode = document.getElementById("card0" + cardtotal);
-                                while (myNode.firstChild) {
-                                    myNode.removeChild(myNode.firstChild);
-                                }
-                                myNode.appendChild(cardhand[cardnum].createNode());
-                                cardtotal++;
-                            }
-                        });
-                    }
-                    else {
-                        while (tempdoc.firstChild) {
-                            tempdoc.removeChild(tempdoc.firstChild);
-                        }
-                    }
-                }
-            }
-            while (cardtotal < 52) {
-                var myNode = document.getElementById("card0" + i);
-                while (myNode.firstChild) {
-                    myNode.removeChild(myNode.firstChild);
-                }
-                cardtotal++;
-            }
-        }
 
     </script>
 
     <script>
-        function clearCards () {
-            for (var cardtotal = 0; cardtotal < 52; cardtotal++) {
-                var myNode = document.getElementById("card0" + cardtotal);
-                while (myNode.firstChild) {
-                    console.log (myNode.firstChild);
-                    myNode.removeChild(myNode.firstChild);
-                }
-            }
-        }
-    </script>
-
-
-
-
-    <script>
-        function checkConnections () {
-            allusers = [];
-            readFirebase ("online/", function (snapshot) {
-                var snap = snapshot.val().currentusers;
-                var i = 0;
-                for (k in snap) {
-                    //console.log (k);
-                    //console.log (snap[k]);
-                    if (snapshot.val().currentusers[k] == true) {
-
-                        allusers.push(k);
-                        var myNode = document.getElementById("user" + i);
-                        while (myNode.firstChild) {
-                            myNode.removeChild(myNode.firstChild);
-                        }
-                        myNode.appendChild(document.createTextNode(k + " : "));
-                        i++;
-                    }
-                }
-                while (i < maxplayers) {
-                    var myNode = document.getElementById("user" + i);
-                    while (myNode.firstChild) {
-                        myNode.removeChild(myNode.firstChild);
-                    }
-                    i++;
-                }
-            });
-            checkEveryCard();
-        }
-    </script>
-
-    <script>
-        // Error in here
-        function checkEveryCard () {
-            for (var i = 0; i < maxplayers; i++) {
-                var tempdoc = document.getElementById("user" + i);
-                if (tempdoc != null) {
-
-                    var text = tempdoc.textContent;
-                    if (text.indexOf(':') != -1) {
-                        //console.log (text);
-                        var handsize;
-
-                        var tempusername = text.substring(0, text.indexOf(':') - 1);
-                        //console.log(tempusername);
-                        readFirebase("users/" + tempusername, function (snapshot) {
-                            var playerhands = snapshot.val().hand;
-                            handsize = numCards(playerhands);
-                            while (tempdoc.firstChild) {
-                                tempdoc.removeChild(tempdoc.firstChild);
-                            }
-                            tempdoc.appendChild(document.createTextNode(tempusername + " : " + handsize));
-                        });
-                    }
-                    else {
-                        while (tempdoc.firstChild) {
-                            tempdoc.removeChild(tempdoc.firstChild);
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-
-    <script>
-        function numCards (hand) {
-            var total = 0;
-            for (d in hand) {
-                if (hand[d].replace(/\s/g, '') != "") {
-                    total++;
-                }
-            }
-            return total;
-        }
-    </script>
-
-    <script>
-
+		//dealer stuffs that will be done by lawrence
         var deck, cards;
         deck = new Stack();
         deck.makeDeck(1);
@@ -294,14 +70,6 @@
 </table>
 
 
-<script>
-    checkConnections();
-</script>
-
-<script>
-    var u = setInterval(checkConnections,30);
-    //var v = setInterval(checkEveryCard,30);
-</script>
 
 <!-- end other players-->
 <hr/>
@@ -323,11 +91,7 @@
             <td id="call1">
 
             </td>
-            <script>
-                //updateStoppage();
-                var y = setInterval(updateStoppage,100);
-                //clearInterval(y);
-            </script>
+
             <td>
                 <form>
                     <td>
@@ -350,7 +114,7 @@
 <div>
     <table width="100%">
         <tr>
-
+			<!--the 6 cards elements that represent the user's hand -->
             <td id="card0"></td>
             <td id="card1"></td>
             <td id="card2"></td>
@@ -358,15 +122,7 @@
             <td id="card4"></td>
             <td id="card5"></td>
 
-            <script>
-                updateCards();
-            </script>
 
-            <script>
-
-                var t = setInterval(updateCards,1000);
-                //clearInterval(t);
-            </script>
 
         </tr>
 
@@ -407,11 +163,7 @@
             <td id="card050"></td><td id="card051"></td>
 
 
-            <script>
 
-                //var t = setInterval(updateCards,1000);
-                //clearInterval(t);
-            </script>
 
         </tr>
 
