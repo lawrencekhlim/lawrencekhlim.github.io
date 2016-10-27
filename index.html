@@ -16,7 +16,7 @@
     <script type="text/javascript" src="src/firebase.js"></script>
     <script type="text/javascript" src="src/User.js"></script>
     <script type="text/javascript" src="src/dealer.js"></script>
-
+    <script type="text/javascript" src="src/update.js"></script>
 
     <style>
         td {text-align: center;}
@@ -25,6 +25,7 @@
 
 
     <script>
+        /*
         checkCookie();
         openFirebase();
         var username = getCookie ("username");
@@ -35,9 +36,11 @@
         var maxplayers = 8;
         var cardsinhand = 0;
         var allusers = [];
+        */
     </script>
 
     <script>
+        /*
         function translateToCards (hand) {
             var cards = [];
             for (var i = 0; i < hand.length; i++) {
@@ -45,10 +48,12 @@
             }
             return cards;
         }
+        */
     </script>
 
 
     <script>
+        /*
         function updateCards () {
             cardsinhand = 0;
             var stringhand = user.getHand();
@@ -76,9 +81,11 @@
                 }
             }
         }
+        */
     </script>
 
     <script>
+        /*
         function updateStoppage () {
             var call;
             readFirebase("call", function(snapshot){
@@ -102,18 +109,22 @@
                 setDealerVisibility();
             }
         }
+        */
     </script>
 
     <script>
+        /*
         function callBS () {
             writeFirebase("call", {currentCall:username+" called BS"});
         }
         function callSPOTON () {
             writeFirebase("call", {currentCall:username+" called SPOT ON"});
         }
+        */
     </script>
 
     <script>
+        /*
         function getEveryCard () {
             var cardtotal = 0;
             for (var i = 0; i < maxplayers; i++) {
@@ -154,9 +165,11 @@
                 cardtotal++;
             }
         }
+        */
     </script>
 
     <script>
+        /*
         function clearCards () {
             for (var cardtotal = 0; cardtotal < 52; cardtotal++) {
                 var myNode = document.getElementById("card0" + cardtotal);
@@ -166,12 +179,14 @@
                 }
             }
         }
+        */
     </script>
 
 
 
 
     <script>
+        /*
         function checkConnections () {
             allusers = [];
             readFirebase ("online/", function (snapshot) {
@@ -200,9 +215,11 @@
             });
             checkEveryCard();
         }
+        */
     </script>
 
     <script>
+        /*
         // Error in here
         function checkEveryCard () {
             for (var i = 0; i < maxplayers; i++) {
@@ -231,9 +248,11 @@
                 }
             }
         }
+        */
     </script>
 
     <script>
+        /*
         function numCards (hand) {
             var total = 0;
             for (d in hand) {
@@ -251,11 +270,17 @@
         deck.makeDeck(1);
         deck.shuffle(1);
         cards = [];
+        // /*
         for (var i = 0; i < 4; i++)
         {
             cards.push (deck.deal().toString());
         }
         var dict = { hand: cards };
+        // */
+        // If I comment the for loop out, I don't change the value of the cards already stored,
+        // but I can see all the cards.
+        // The reverse is true the other way around.
+
         writeFirebase ("users/"+username, dict);
     </script>
 
@@ -265,10 +290,14 @@
         firebase.database().ref("dealer").on("value", function(dataSnapshot){
             checkDealer ();
         });
+        firebase.database().ref("online").on("value", function(dataSnapshot){
+            setDealerVisibility();
+        });
     </script>
 
 
     <script>
+        /*
         function getSelectedOption(sel) {
             var opt;
             for ( var i = 0; i < sel.options.length; i++ ) {
@@ -282,7 +311,7 @@
     </script>
 
     <script>
-        function resetCall () { writeFirebase("call", {currentCall:""}); }
+        //function resetCall () { writeFirebase("call", {currentCall:""}); }
     </script>
 
 </head>
@@ -319,6 +348,7 @@
                 <option value="3">3</option>
                 <option value="2">2</option>
                 <option value="1">1</option>
+                <option value="0">0</option>
             </select>
         </td>
         <td width="12.5%">
@@ -329,6 +359,7 @@
                 <option value="3">3</option>
                 <option value="2">2</option>
                 <option value="1">1</option>
+                <option value="0">0</option>
             </select>
         </td>
         <td width="12.5%">
@@ -339,6 +370,7 @@
                 <option value="3">3</option>
                 <option value="2">2</option>
                 <option value="1">1</option>
+                <option value="0">0</option>
             </select>
         </td>
         <td width="12.5%">
@@ -349,6 +381,7 @@
                 <option value="3">3</option>
                 <option value="2">2</option>
                 <option value="1">1</option>
+                <option value="0">0</option>
             </select>
         </td>
         <td width="12.5%">
@@ -359,6 +392,7 @@
                 <option value="3">3</option>
                 <option value="2">2</option>
                 <option value="1">1</option>
+                <option value="0">0</option>
             </select>
         </td>
         <td width="12.5%">
@@ -369,6 +403,7 @@
                 <option value="3">3</option>
                 <option value="2">2</option>
                 <option value="1">1</option>
+                <option value="0">0</option>
             </select>
         </td>
         <td width="12.5%">
@@ -379,6 +414,7 @@
                 <option value="3">3</option>
                 <option value="2">2</option>
                 <option value="1">1</option>
+                <option value="0">0</option>
             </select>
         </td>
         <td width="12.5%">
@@ -389,13 +425,14 @@
                 <option value="3">3</option>
                 <option value="2">2</option>
                 <option value="1">1</option>
+                <option value="0">0</option>
             </select>
         </td>
 
     </tr>
 
     <script>
-        for (var i = 0; i < maxplayers; i++) {
+        for (var i = 0; i < MAX_PLAYERS; i++) {
             document.getElementById('playercards'+i).value=4;
         }
     </script>
@@ -410,15 +447,15 @@
     setDealerVisibility();
 
 </script>
-
+<!--
 <script>
-    checkConnections();
+    //checkConnections();
 </script>
 
 <script>
-    var u = setInterval(checkConnections,30);
+    //var u = setInterval(checkConnections,30);
     //var v = setInterval(checkEveryCard,30);
-</script>
+</script> -->
 
 <!-- end other players-->
 <hr/>
@@ -442,7 +479,7 @@
             </td>
             <script>
                 //updateStoppage();
-                var y = setInterval(updateStoppage,100);
+                //var y = setInterval(updateStoppage,100);
                 //clearInterval(y);
             </script>
             <td>
@@ -480,7 +517,7 @@
             </script>
 
             <script>
-                var t = setInterval(updateCards,1000);
+                //var t = setInterval(updateCards,1000);
                 //clearInterval(t);
             </script>
 
