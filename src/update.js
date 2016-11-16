@@ -165,9 +165,10 @@ function clearCards () {
     }
 }
 
-//needs to be rewritten to be less awful
+//
 function checkConnections () {
     allusers = [];
+	
     readFirebase ("online/", function (snapshot) {
         var snap = snapshot.val().currentusers;
         var i = 0;
