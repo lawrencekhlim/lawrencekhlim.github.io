@@ -1,59 +1,29 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Contact.css';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission here - you can integrate with email services like EmailJS
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! I\'ll get back to you soon.');
-    setFormData({ name: '', email: '', subject: '', message: '' });
-  };
-
   const contactInfo = [
     {
       icon: '📧',
       label: 'Email',
       value: 'lawrenceklim {at} ucsb {dot} edu',
-      link: null
-    },
-    // {
-    //   icon: '📱',
-    //   label: 'Phone',
-    //   value: '+1 (555) 123-4567',
-    //   link: 'tel:+15551234567'
-    // },
-    {
-      icon: '📍',
-      label: 'Location',
-      value: 'Santa Clara, CA',
-      link: null
+      link: null,
+      isImage: false
     },
     {
-      icon: '💼',
+      icon: '/LI-In-Bug.png',
       label: 'LinkedIn',
       value: 'linkedin.com/in/lawrencekhlim',
-      link: 'https://linkedin.com/in/lawrencekhlim'
+      link: 'https://linkedin.com/in/lawrencekhlim',
+      isImage: true
+    },
+    {
+      icon: '/github-mark.png',
+      label: 'GitHub',
+      value: 'github.com/lawrencekhlim',
+      link: 'https://github.com/lawrencekhlim',
+      isImage: true
     }
-  ];
-
-  const socialLinks = [
-    { name: 'GitHub', url: 'https://github.com/lawrencekhlim', icon: '🐙' },
-    { name: 'LinkedIn', url: 'https://linkedin.com/in/lawrencekhlim', icon: '💼' }
   ];
 
   return (
@@ -71,7 +41,13 @@ const Contact = () => {
             <div className="contact-list">
               {contactInfo.map((item, index) => (
                 <div key={index} className="contact-item">
-                  <span className="contact-icon">{item.icon}</span>
+                  <span className="contact-icon">
+                    {item.isImage ? (
+                      <img src={item.icon} alt={item.label} className="icon-image" />
+                    ) : (
+                      item.icon
+                    )}
+                  </span>
                   <div className="contact-details">
                     <span className="contact-label">{item.label}</span>
                     {item.link ? (
@@ -82,25 +58,6 @@ const Contact = () => {
                   </div>
                 </div>
               ))}
-            </div>
-            
-            <div className="social-links">
-              <h4>Follow Me</h4>
-              <div className="social-icons">
-                {socialLinks.map((social, index) => (
-                  <a 
-                    key={index}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="social-link"
-                    title={social.name}
-                  >
-                    <span className="social-icon">{social.icon}</span>
-                    <span className="social-name">{social.name}</span>
-                  </a>
-                ))}
-              </div>
             </div>
           </div>
         </div>

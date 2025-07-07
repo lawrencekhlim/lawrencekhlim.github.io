@@ -12,10 +12,8 @@
 }
 
 .contact-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  max-width: 1000px;
+  display: block;
+  max-width: 600px;
   margin: 0 auto;
 }
 
@@ -48,6 +46,15 @@
   font-size: 1.5rem;
   width: 40px;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-image {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
 }
 
 .contact-details {
