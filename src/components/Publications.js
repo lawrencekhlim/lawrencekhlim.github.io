@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import './Publications.css';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const Publications = () => {
   const [expandedPapers, setExpandedPapers] = useState(new Set());
+  const animationRef = useScrollAnimation();
   const publications = [
     {
       title: "Tricycle: Private Transformer Inference with Tricyclic Encodings",
@@ -61,14 +63,14 @@ const Publications = () => {
   };
 
   return (
-    <section id="publications" className="section">
+    <section id="publications" className="section" ref={animationRef}>
       <div className="container">
-        <h2 className="section-title">Research Publications</h2>
+        <h2 className="section-title scroll-animate">Research Publications</h2>
         <div className="publications-grid">
           {publications.map((pub, index) => (
             <div 
               key={index} 
-              className="publication-item card"
+              className="publication-item card scroll-animate"
               onClick={() => toggleAbstract(index)}
               style={{ cursor: 'pointer' }}
             >

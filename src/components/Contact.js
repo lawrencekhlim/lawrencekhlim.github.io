@@ -1,7 +1,9 @@
 import React from 'react';
 import './Contact.css';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const Contact = () => {
+  const animationRef = useScrollAnimation();
   const contactInfo = [
     {
       icon: '📧',
@@ -27,20 +29,20 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="section contact-section">
+    <section id="contact" className="section contact-section" ref={animationRef}>
       <div className="container">
-        <h2 className="section-title">Get In Touch</h2>
-        <p className="contact-intro">
+        <h2 className="section-title scroll-animate">Get In Touch</h2>
+        <p className="contact-intro scroll-animate">
           I'm always interested in new opportunities, collaborations, and interesting projects. 
           Whether you have a question or just want to say hi, feel free to reach out!
         </p>
         
         <div className="contact-content">
-          <div className="contact-info">
+          <div className="contact-info scroll-animate-scale">
             <h3>Contact Information</h3>
             <div className="contact-list">
               {contactInfo.map((item, index) => (
-                <div key={index} className="contact-item">
+                <div key={index} className="contact-item scroll-animate">
                   <span className="contact-icon">
                     {item.isImage ? (
                       <img src={item.icon} alt={item.label} className="icon-image" />

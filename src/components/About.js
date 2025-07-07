@@ -24,20 +24,15 @@ const About = () => {
           </div>
           <div className="about-text">
             <h1 className="about-title">Lawrence Lim</h1>
-            <h2 className="about-subtitle">AI & Privacy Researcher & Software Engineer</h2>
-            <p className="about-location">📍 San Francisco Bay Area</p>
+            <h2 className="about-subtitle">Privacy & AI Researcher</h2>
+            <p className="about-location">San Francisco Bay Area</p>
             <p className="about-description">
-              Welcome to my professional portfolio! I am a passionate software engineer with expertise in 
-              developing innovative solutions and conducting cutting-edge research. With a strong background 
-              in computer science and a commitment to excellence, I strive to create impactful technology 
-              that makes a difference.
+              Hello there! I am a computer science PhD student at UC Santa Barbara. 
             </p>
             <p className="about-description">
-              My work spans across various domains including machine learning, web development, and 
-              software architecture. I enjoy tackling complex problems and collaborating with teams 
-              to deliver high-quality solutions.
+              My work spans across various domains including privacy, AI, human-computer interaction, compilers, and more. Recently, I have been interested on improving the security and privacy of Large Language Models by using homomorphic encryption to enable private inference. See my recent paper below!
             </p>
-            <div className="about-stats">
+            {/* <div className="about-stats">
               <div className="stat">
                 <h3>5+</h3>
                 <p>Years Experience</p>
@@ -50,7 +45,7 @@ const About = () => {
                 <h3>3+</h3>
                 <p>Publications</p>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

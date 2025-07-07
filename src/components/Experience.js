@@ -1,7 +1,9 @@
 import React from 'react';
 import './Experience.css';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const Experience = () => {
+  const animationRef = useScrollAnimation();
   const experiences = [
     {
       title: "Graduate Researcher",
@@ -21,7 +23,7 @@ const Experience = () => {
       period: "Summer 2024",
       location: "Sunnyvale, CA",
       description: [
-        "Developed a pipeline to compile a Python machine learning models into CKKS homomorphic encryption, leading to a 3000x performance improvement over previous infrastructure",
+        "Developed a pipeline in the <a href='https://github.com/google/heir' target='_blank' rel='noopener noreferrer'>HEIR compiler</a> to compile a Python machine learning models into CKKS homomorphic encryption, leading to a 3000x performance improvement over previous infrastructure",
         "Implemented optimized matrix multiplication FHE kernels, leading to a 6x performance improvement",
       ]
     },
@@ -36,7 +38,7 @@ const Experience = () => {
     },
     {
       title: "Software Engineer Intern",
-      company: "Toyon Research Lab",
+      company: "Toyon Research Corporation",
       period: "Summer 2019",
       location: "Goleta, CA",
       description: [
@@ -48,12 +50,12 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="section">
+    <section id="experience" className="section" ref={animationRef}>
       <div className="container">
-        <h2 className="section-title">Work Experience</h2>
+        <h2 className="section-title scroll-animate">Work Experience</h2>
         <div className="experience-timeline">
           {experiences.map((exp, index) => (
-            <div key={index} className="experience-item">
+            <div key={index} className="experience-item scroll-animate-right">
               <div className="experience-content card">
                 <div className="experience-header">
                   <h3 className="experience-title">{exp.title}</h3>
@@ -65,7 +67,7 @@ const Experience = () => {
                 </div>
                 <ul className="experience-description">
                   {exp.description.map((item, idx) => (
-                    <li key={idx}>{item}</li>
+                    <li key={idx} dangerouslySetInnerHTML={{ __html: item }}></li>
                   ))}
                 </ul>
               </div>
