@@ -93,6 +93,25 @@
   font-weight: bold;
 }
 
+/* Internal link styles */
+.internal-link {
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.internal-link:hover {
+  color: #1d4ed8;
+  border-bottom-color: #1d4ed8;
+}
+
+/* Smooth scrolling for internal links */
+html {
+  scroll-behavior: smooth;
+}
+
 @media (max-width: 768px) {
   .experience-timeline::before {
     left: 15px;

@@ -11,10 +11,11 @@ const Experience = () => {
       period: "2020 - Present",
       location: "Santa Barbara, CA",
       description: [
-        "Optimized key rotations by developing new protocols to eliminate race conditions while utilizing new updatable encryption primitives, resulting in an accepted research paper: QUICKeR: Quicker Updates Involving Continuous Key Rotation (PoPETS 2024)",
-        "Developed a virtual reality application to spatialize music, resulting in an accepted paper at a top HCI conference: Spatializing Music in Virtual Reality (SUI 2023)",
-        "Developed an augmented reality mobile application for spatial music, culminating in an accepted paper at a top HCI conference: A Spatial Music Listening Experience in Augmented Reality (UIST 2021)",
-        "Reduced workload imbalance for distributed system backends by developing a front end cache, leading to a paper: Cache on Track (CoT): Decentralized Elastic Caches for Cloud Environments (EDBT 2021)"
+        "Enabled private inference of Large Language Models by translating every operation in a transformer model into equivalent CKKS homomorphic encryption operations: <a href='#tricycle-2025' class='internal-link'>Tricycle: Private Transformer Inference with Tricyclic Encodings (2025)</a>",
+        "Optimized key rotations by developing new protocols to eliminate race conditions while utilizing new updatable encryption primitives, resulting in an accepted research paper: <a href='#quicker-2024' class='internal-link'>QUICKeR: Quicker Updates Involving Continuous Key Rotation (PoPETS 2024)</a>",
+        "Developed a virtual reality application to spatialize music, resulting in an accepted paper at a top HCI conference: <a href='#spatializing-vr-2023' class='internal-link'>Spatializing Music in Virtual Reality (SUI 2023)</a>",
+        "Developed an augmented reality mobile application for spatial music, culminating in an accepted paper at a top HCI conference: <a href='#spatial-ar-2021' class='internal-link'>A Spatial Music Listening Experience in Augmented Reality (UIST 2021)</a>",
+        "Reduced workload imbalance for distributed system backends by developing a front end cache, leading to a paper: <a href='#cot-2021' class='internal-link'>Cache on Track (CoT): Decentralized Elastic Caches for Cloud Environments (EDBT 2021)</a>"
       ]
     },
     {

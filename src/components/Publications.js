@@ -1,12 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Publications.css';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const Publications = () => {
   const [expandedPapers, setExpandedPapers] = useState(new Set());
   const animationRef = useScrollAnimation();
+  
+  // Handle hash changes for internal links
+  useEffect(() => {
+    const handleHashChange = () => {
+      if (window.location.hash) {
+        const targetElement = document.querySelector(window.location.hash);
+        if (targetElement) {
+          // Smooth scroll to the target with offset for header
+          setTimeout(() => {
+            targetElement.scrollIntoView({ 
+              behavior: 'smooth', 
+              block: 'center' 
+            });
+          }, 100);
+        }
+      }
+    };
+
+    handleHashChange(); // Check on mount
+    window.addEventListener('hashchange', handleHashChange);
+    
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+    };
+  }, []);
+
   const publications = [
     {
+      id: "tricycle-2025",
       title: "Tricycle: Private Transformer Inference with Tricyclic Encodings",
       authors: "Lawrence Lim, Vikas Kalagi, Divyakant Agrawal, Amr El Abbadi",
       venue: "Cryptology ePrint Archive",
@@ -15,6 +42,7 @@ const Publications = () => {
       link: "https://ia.cr/2025/1200"
     },
     {
+      id: "quicker-2024",
       title: "QUICKeR: Quicker Updates Involving Continuous Key Rotation",
       authors: "Lawrence Lim, Wei-Yee Goh, Divyakant Agrawal, Amr El Abbadi, Trinabh Gupta",
       venue: "Proceedings on Privacy Enhancing Technologies",
@@ -23,6 +51,7 @@ const Publications = () => {
       link: "https://doi.org/10.56553/popets-2024-0005"
     },
     {
+      id: "spatializing-vr-2023",
       title: "Spatializing Music in Virtual Reality",
       authors: "Steven Jiang, Lawrence Lim, Misha Sra",
       venue: "Spatial User Interaction",
@@ -31,6 +60,7 @@ const Publications = () => {
       link: "https://doi.org/10.1145/3607822.3618011"
     },
     {
+      id: "spatial-ar-2021",
       title: "A Spatial Music Listening Experience in Augmented Reality",
       authors: "Lawrence Lim, Wei-Yee Goh, Mara Downing, Misha Sra",
       venue: "User Interface Software and Technology",
@@ -39,6 +69,7 @@ const Publications = () => {
       link: "https://doi.org/10.1145/3474349.3480218"
     },
     {
+      id: "cot-2021",
       title: "CoT: Decentralized Elastic Caches for Cloud Applications",
       authors: "Victor Zakhary, Lawrence Lim, Divyakant Agrawal, Amr El Abbadi",
       venue: "Extending Database Technology",
@@ -70,6 +101,7 @@ const Publications = () => {
           {publications.map((pub, index) => (
             <div 
               key={index} 
+              id={pub.id}
               className="publication-item card scroll-animate"
               onClick={() => toggleAbstract(index)}
               style={{ cursor: 'pointer' }}
