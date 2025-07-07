@@ -1,0 +1,16 @@
+.App {
+  min-height: 100vh;
+}
+
+/* Navigation Styles */
+.nav-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+}
