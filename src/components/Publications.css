@@ -85,16 +85,16 @@
 /* Highlight effect for linked publications */
 .publication-item:target {
   animation: highlight 2s ease-in-out;
-  border-left-color: #10b981;
+  border-left-color: #3b82f6;
 }
 
 @keyframes highlight {
   0% {
-    background-color: rgba(16, 185, 129, 0.1);
+    background-color: rgba(59, 130, 246, 0.1);
     transform: scale(1.02);
   }
   50% {
-    background-color: rgba(16, 185, 129, 0.05);
+    background-color: rgba(59, 130, 246, 0.05);
   }
   100% {
     background-color: transparent;

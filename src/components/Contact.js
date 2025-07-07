@@ -68,7 +68,7 @@ const Contact = () => {
       <footer className="footer">
         <div className="container">
           <p>&copy; 2025 Lawrence Lim. All rights reserved.</p>
-          <p>Built with React and ❤️</p>
+          <p>Built with React</p>
         </div>
       </footer>
     </section>

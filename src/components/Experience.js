@@ -4,6 +4,26 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const Experience = () => {
   const animationRef = useScrollAnimation();
+  
+  // Handle smooth scrolling for internal links
+  const handleInternalLinkClick = (e) => {
+    const href = e.target.getAttribute('href');
+    if (href && href.startsWith('#')) {
+      e.preventDefault();
+      const targetElement = document.querySelector(href);
+      if (targetElement) {
+        targetElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center'
+        });
+        // Update the URL hash
+        window.history.pushState(null, null, href);
+        // Trigger hashchange event for the Publications component
+        window.dispatchEvent(new HashChangeEvent('hashchange'));
+      }
+    }
+  };
+
   const experiences = [
     {
       title: "Graduate Researcher",
@@ -66,7 +86,7 @@ const Experience = () => {
                     <span className="experience-location">{exp.location}</span>
                   </div>
                 </div>
-                <ul className="experience-description">
+                <ul className="experience-description" onClick={handleInternalLinkClick}>
                   {exp.description.map((item, idx) => (
                     <li key={idx} dangerouslySetInnerHTML={{ __html: item }}></li>
                   ))}

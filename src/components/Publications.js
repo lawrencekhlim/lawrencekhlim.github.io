@@ -6,31 +6,6 @@ const Publications = () => {
   const [expandedPapers, setExpandedPapers] = useState(new Set());
   const animationRef = useScrollAnimation();
   
-  // Handle hash changes for internal links
-  useEffect(() => {
-    const handleHashChange = () => {
-      if (window.location.hash) {
-        const targetElement = document.querySelector(window.location.hash);
-        if (targetElement) {
-          // Smooth scroll to the target with offset for header
-          setTimeout(() => {
-            targetElement.scrollIntoView({ 
-              behavior: 'smooth', 
-              block: 'center' 
-            });
-          }, 100);
-        }
-      }
-    };
-
-    handleHashChange(); // Check on mount
-    window.addEventListener('hashchange', handleHashChange);
-    
-    return () => {
-      window.removeEventListener('hashchange', handleHashChange);
-    };
-  }, []);
-
   const publications = [
     {
       id: "tricycle-2025",
@@ -78,6 +53,43 @@ const Publications = () => {
       link: "https://openproceedings.org/2021/conf/edbt/p105.pdf"
     }
   ];
+
+  // Handle hash changes for internal links
+  useEffect(() => {
+    const handleHashChange = () => {
+      if (window.location.hash) {
+        const targetId = window.location.hash.substring(1);
+        const targetElement = document.querySelector(window.location.hash);
+        if (targetElement) {
+          // Find the publication index that matches the target ID
+          const publicationIndex = publications.findIndex(pub => pub.id === targetId);
+          if (publicationIndex !== -1) {
+            // Automatically expand the abstract for linked publications
+            setExpandedPapers(prev => {
+              const newExpanded = new Set(prev);
+              newExpanded.add(publicationIndex);
+              return newExpanded;
+            });
+          }
+          
+          // Smooth scroll to the target with offset for header
+          setTimeout(() => {
+            targetElement.scrollIntoView({ 
+              behavior: 'smooth', 
+              block: 'center' 
+            });
+          }, 100);
+        }
+      }
+    };
+
+    handleHashChange(); // Check on mount
+    window.addEventListener('hashchange', handleHashChange);
+    
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+    };
+  }, []); // Remove publications from dependency array to prevent unnecessary re-renders
 
   const toggleAbstract = (index) => {
     const newExpanded = new Set(expandedPapers);

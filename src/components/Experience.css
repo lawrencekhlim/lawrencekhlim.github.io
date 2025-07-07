@@ -107,11 +107,6 @@
   border-bottom-color: #1d4ed8;
 }
 
-/* Smooth scrolling for internal links */
-html {
-  scroll-behavior: smooth;
-}
-
 @media (max-width: 768px) {
   .experience-timeline::before {
     left: 15px;

@@ -36,10 +36,10 @@ const Education = () => {
                     <h4 className="education-degree">{edu.degree}</h4>
                     <p className="education-major">{edu.major}</p>
                     <p className="education-institution">{edu.institution}</p>
-                    <div className="education-meta">
-                      <span className="education-period">{edu.period}</span>
-                      <span className="education-gpa">GPA: {edu.gpa}</span>
-                    </div>
+                  </div>
+                  <div className="education-right">
+                    <span className="education-period">{edu.period}</span>
+                    <span className="education-gpa">GPA: {edu.gpa}</span>
                   </div>
                 </div>
               </div>
