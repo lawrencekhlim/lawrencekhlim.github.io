@@ -5,7 +5,6 @@ import About from './components/About';
 import Experience from './components/Experience';
 import Publications from './components/Publications';
 import Education from './components/Education';
-import Skills from './components/Skills';
 import Contact from './components/Contact';
 
 function App() {
@@ -13,10 +12,9 @@ function App() {
     <div className="App">
       <Header />
       <About />
-      <Experience />
       <Publications />
       <Education />
-      <Skills />
+      <Experience />
       <Contact />
     </div>
   );

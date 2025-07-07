@@ -25,6 +25,7 @@ const About = () => {
           <div className="about-text">
             <h1 className="about-title">Lawrence Lim</h1>
             <h2 className="about-subtitle">AI & Privacy Researcher & Software Engineer</h2>
+            <p className="about-location">📍 San Francisco Bay Area</p>
             <p className="about-description">
               Welcome to my professional portfolio! I am a passionate software engineer with expertise in 
               developing innovative solutions and conducting cutting-edge research. With a strong background 

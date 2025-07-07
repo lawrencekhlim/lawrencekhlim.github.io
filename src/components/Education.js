@@ -49,10 +49,8 @@ const Education = () => {
   return (
     <section id="education" className="section">
       <div className="container">
-        <h2 className="section-title">Education & Certifications</h2>
-        
+        <h2 className="section-title">Education</h2>
         <div className="education-section">
-          <h3 className="subsection-title">Academic Background</h3>
           <div className="education-list">
             {education.map((edu, index) => (
               <div key={index} className="education-item card">
@@ -67,31 +65,6 @@ const Education = () => {
                     </div>
                   </div>
                 </div>
-                
-                {/* <div className="education-details">
-                  <div className="education-coursework">
-                    <h5>Relevant Coursework:</h5>
-                    <ul>
-                      {edu.relevant.map((course, idx) => (
-                        <li key={idx}>{course}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  
-                  <div className="education-thesis">
-                    <h5>Thesis:</h5>
-                    <p>{edu.thesis}</p>
-                  </div>
-                  
-                  <div className="education-honors">
-                    <h5>Honors & Awards:</h5>
-                    <div className="honors-list">
-                      {edu.honors.map((honor, idx) => (
-                        <span key={idx} className="honor-badge">{honor}</span>
-                      ))}
-                    </div>
-                  </div>
-                </div> */}
               </div>
             ))}
           </div>

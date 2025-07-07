@@ -63,7 +63,7 @@ const Publications = () => {
   return (
     <section id="publications" className="section">
       <div className="container">
-        <h2 className="section-title">Publications & Research</h2>
+        <h2 className="section-title">Research Publications</h2>
         <div className="publications-grid">
           {publications.map((pub, index) => (
             <div 
@@ -98,22 +98,6 @@ const Publications = () => {
               </div>
             </div>
           ))}
-        </div>
-        <div className="publication-summary">
-          <div className="summary-stats">
-            <div className="stat">
-              <h3>{publications.length}</h3>
-              <p>Publications</p>
-            </div>
-            <div className="stat">
-              <h3>5+</h3>
-              <p>Years Research</p>
-            </div>
-            <div className="stat">
-              <h3>4</h3>
-              <p>Collaborations</p>
-            </div>
-          </div>
         </div>
       </div>
     </section>
