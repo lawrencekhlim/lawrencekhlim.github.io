@@ -130,8 +130,8 @@ const Publications = () => {
                 dangerouslySetInnerHTML={{ __html: formatAuthors(pub.authors) }}
               ></p>
               <p className="publication-venue">{pub.venue}</p>
-              {expandedPapers.has(index) && (
-                <p className="publication-abstract">{pub.abstract}</p>
+              {(
+                <p className={`publication-abstract${expandedPapers.has(index) ? '' : ' collapsed'}`}>{pub.abstract}</p>
               )}
               <div className="publication-footer">
                 <a 

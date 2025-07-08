@@ -32,6 +32,13 @@
   display: flex;
   list-style: none;
   gap: 2rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  max-width: 100vw;
+}
+
+.nav-menu::-webkit-scrollbar {
+  display: none;
 }
 
 .nav-menu button {
@@ -53,6 +60,10 @@
   .nav-menu {
     gap: 1rem;
     font-size: 0.9rem;
+    /* Ensure horizontal scroll on mobile */
+    overflow-x: auto;
+    max-width: 100vw;
+    white-space: nowrap;
   }
   
   .nav-brand h2 {
