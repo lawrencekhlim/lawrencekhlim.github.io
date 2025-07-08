@@ -11,7 +11,7 @@ const Education = () => {
       institution: "University of California, Santa Barbara",
       period: "2020 - Current",
       location: "Santa Barbara, CA",
-      gpa: "3.94/4.0"
+      gpa: "3.93/4.0"
     },
     {
       degree: "Bachelor of Science",
@@ -19,7 +19,7 @@ const Education = () => {
       institution: "University of California, Santa Barbara",
       period: "2016 - 2020",
       location: "Santa Barbara, CA",
-      gpa: "3.93/4.0"
+      gpa: "3.94/4.0"
     }
   ];
 
