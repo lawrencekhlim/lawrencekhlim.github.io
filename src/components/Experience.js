@@ -26,7 +26,7 @@ const Experience = () => {
 
   const experiences = [
     {
-      title: "Graduate Researcher",
+      title: "Graduate Student Researcher",
       company: "University of California, Santa Barbara",
       period: "2020 - Present",
       location: "Santa Barbara, CA",

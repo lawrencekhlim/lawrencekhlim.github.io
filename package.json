@@ -1,7 +1,7 @@
 {
-  "name": "personal-resume-website",
+  "name": "lawrence-lim-website",
   "version": "1.0.0",
-  "description": "Personal resume website built with React",
+  "description": "Lawrence Lim's website",
   "homepage": "https://lawrencekhlim.github.io",
   "main": "index.js",
   "scripts": {
