@@ -44,7 +44,7 @@ const Experience = () => {
       period: "Summer 2024",
       location: "Sunnyvale, CA",
       description: [
-        "Developed a pipeline in the <a href='https://github.com/google/heir' target='_blank' rel='noopener noreferrer'>HEIR compiler</a> to compile a Python machine learning models into CKKS homomorphic encryption, leading to a 3000x performance improvement over previous infrastructure",
+        "Developed a pipeline in the <a href='https://github.com/google/heir' target='_blank' rel='noopener noreferrer'>HEIR compiler</a> to compile a Python machine learning models into CKKS homomorphic encryption, leading to a 3000x performance improvement over previous infrastructure and a research paper: <a href='#heir-2025' class='internal-link'>HEIR: A Universal Compiler for Homomorphic Encryption",
         "Implemented optimized matrix multiplication FHE kernels, leading to a 6x performance improvement",
       ]
     },

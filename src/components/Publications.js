@@ -17,6 +17,15 @@ const Publications = () => {
       link: "https://ia.cr/2025/1200"
     },
     {
+      id: "heir-2025",
+      title: "HEIR: A Universal Compiler for Homomorphic Encryption",
+      authors: "Asra Ali, Jaeho Choi, Bryant Gipson, Shruthi Gorantala, Jeremy Kun, Wouter Legiest, Lawrence Lim, Alexander Viand, Meron Zerihun Demissie, Hongren Zheng",
+      venue: "arXiv preprint",
+      year: "2025",
+      abstract: "This work presents Homomorphic Encryption Intermediate Representation (HEIR), a unified approach to building homomorphic encryption (HE) compilers. HEIR aims to support all mainstream techniques in homomorphic encryption, integrate with all major software libraries and hardware accelerators, and advance the field by providing a platform for research and benchmarking. Built on the MLIR compiler framework, HEIR introduces HE-specific abstraction layers at which existing optimizations and new research ideas may be easily implemented. Although many HE optimization techniques have been proposed, it remains difficult to combine or compare them effectively. HEIR provides a means to effectively explore the space of HE optimizations. HEIR addresses the entire HE stack and includes support for various frontends, including Python. The contribution of this work includes: (1) We introduce HEIR as a framework for building HE compilers. (2) We validate HEIR's design by porting a large fraction of the HE literature to HEIR, and we argue that HEIR can tackle more complicated and diverse programs than prior literature. (3) We provide evidence that HEIR is emerging as the de facto HE compiler for academic research and industry development.",
+      link: "https://arxiv.org/abs/2508.11095"
+    },
+    {
       id: "quicker-2024",
       title: "QUICKeR: Quicker Updates Involving Continuous Key Rotation",
       authors: "Lawrence Lim, Wei-Yee Goh, Divyakant Agrawal, Amr El Abbadi, Trinabh Gupta",
