@@ -8,6 +8,15 @@ const Publications = () => {
   
   const publications = [
     {
+      id: "hyperion-2025",
+      title: "Hyperion: Private Token Sampling with Homomorphic Encryption",
+      authors: "Lawrence Lim, Jiaming Liu, Vikas Kalagi, Divyakant Agrawal, Amr El Abbadi",
+      venue: "Cryptology ePrint Archive",
+      year: "2025",
+      abstract: "A promising direction for enabling private queries to large language models (LLMs) is with homomorphic encryption (HE). An open problem is performing token sampling under HE. In this paper, we introduce Hyperion, an efficient HE algorithm for inverse transform sampling, enabling private token sampling with 1 comparison depth, O(1) amortized comparisons, and O(log n) rotations. We implement our approach and demonstrate that it samples tokens in 0.14 seconds for 32k tokens (4.4 microseconds per token) on GPU, achieving a 100x latency improvement over prior work.",
+      link: "https://ia.cr/2025/2318"
+    },
+    {
       id: "tricycle-2025",
       title: "Tricycle: Private Transformer Inference with Tricyclic Encodings",
       authors: "Lawrence Lim, Vikas Kalagi, Divyakant Agrawal, Amr El Abbadi",
@@ -24,6 +33,15 @@ const Publications = () => {
       year: "2025",
       abstract: "This work presents Homomorphic Encryption Intermediate Representation (HEIR), a unified approach to building homomorphic encryption (HE) compilers. HEIR aims to support all mainstream techniques in homomorphic encryption, integrate with all major software libraries and hardware accelerators, and advance the field by providing a platform for research and benchmarking. Built on the MLIR compiler framework, HEIR introduces HE-specific abstraction layers at which existing optimizations and new research ideas may be easily implemented. Although many HE optimization techniques have been proposed, it remains difficult to combine or compare them effectively. HEIR provides a means to effectively explore the space of HE optimizations. HEIR addresses the entire HE stack and includes support for various frontends, including Python. The contribution of this work includes: (1) We introduce HEIR as a framework for building HE compilers. (2) We validate HEIR's design by porting a large fraction of the HE literature to HEIR, and we argue that HEIR can tackle more complicated and diverse programs than prior literature. (3) We provide evidence that HEIR is emerging as the de facto HE compiler for academic research and industry development.",
       link: "https://arxiv.org/abs/2508.11095"
+    },
+    {
+      id: "llm-sql-2025",
+      title: "LLM-SQL-Solver: Can LLMs Determine SQL Equivalence?",
+      authors: "Fuheng Zhao, Jiayue Chen, Lawrence Lim, Ishtiyaque Ahmad, Divyakant Agrawal, Amr El Abbadi",
+      venue: "IEEE BigData",
+      year: "2025",
+      abstract: "Judging the equivalence between two SQL queries is a fundamental problem with many practical applications in data management and SQL generation (i.e., evaluating the quality of generated SQL queries in text-to-SQL task). While the research community has reasoned about SQL equivalence for decades, it poses considerable difficulties and no complete solutions exist. Recently, Large Language Models (LLMs) have shown strong reasoning capability in conversation, question answering and solving mathematics challenges. In this paper, we study if LLMs can be used to determine the equivalence between SQL queries under two notions of SQL equivalence (semantic equivalence and relaxed equivalence). To assist LLMs in generating high quality responses, we present two prompting techniques: Miniature & Mull and Explain & Compare. The former technique is used to evaluate the semantic equivalence in which it asks LLMs to execute a query on a simple database instance and then explore if a counterexample exists by modifying the database. The latter technique is used to evaluate the relaxed equivalence in which it asks LLMs to explain the queries and then compare if they contain significant logical differences. Our experiments demonstrate using our techniques, LLMs is a promising tool to help data engineers in writing semantically equivalent SQL queries, however challenges still persist, and is a better metric for evaluating SQL generation than the popular execution accuracy.",
+      link: "https://doi.org/10.48550/arXiv.2312.10321"
     },
     {
       id: "quicker-2024",
