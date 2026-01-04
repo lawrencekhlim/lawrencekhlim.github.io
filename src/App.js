@@ -11,11 +11,21 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <About />
-      <Publications />
-      <Education />
-      <Experience />
-      <Contact />
+      <div className="left-column">
+        <About />
+        <Education />
+        <Contact />
+      </div>
+      <div className="right-column">
+        <Publications />
+        <Experience />
+      </div>
+      <footer className="footer-bar">
+        <div className="container">
+          <p>&copy; 2025 Lawrence Lim. All rights reserved.</p>
+          <p>Built with React</p>
+        </div>
+      </footer>
     </div>
   );
 }

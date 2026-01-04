@@ -1,5 +1,82 @@
 .App {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-bar {
+  background: #1e293b;
+  color: #cbd5e1;
+  text-align: center;
+  padding: 1.5rem 0;
+  margin-top: auto;
+}
+
+.footer-bar p {
+  margin: 0.25rem 0;
+  font-size: 0.9rem;
+}
+
+/* Mobile: reorder components */
+@media (max-width: 768px) {
+  .App {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .left-column,
+  .right-column {
+    display: contents;
+  }
+  
+  #about { order: 1; }
+  #publications { order: 2; }
+  #education { order: 3; }
+  #experience { order: 4; }
+  #contact { order: 5; }
+  .footer-bar { order: 6; }
+}
+
+/* Desktop two-column layout */
+@media (min-width: 769px) {
+  .App {
+    display: grid;
+    grid-template-columns: 35% 65%;
+    grid-template-rows: 1fr auto;
+    gap: 3rem;
+    padding: 0 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  .left-column {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 16px;
+    padding: 2rem;
+    color: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+  
+  .right-column {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .footer-bar {
+    grid-column: 1 / -1;
+    margin: 0 -2rem;
+    padding: 1rem 0;
+  }
+}
+
+/* Mobile: stack everything */
+@media (max-width: 768px) {
+  .App {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 /* Navigation Styles */

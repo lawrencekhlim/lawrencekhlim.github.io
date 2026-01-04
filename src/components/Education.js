@@ -6,12 +6,11 @@ const Education = () => {
   const animationRef = useScrollAnimation();
   const education = [
     {
-      degree: "PhD Student",
+      degree: "PhD Candidate",
       major: "Computer Science",
       institution: "University of California, Santa Barbara",
       period: "2020 - Current",
       location: "Santa Barbara, CA",
-      gpa: "3.93/4.0"
     },
     {
       degree: "Bachelor of Science",
@@ -31,16 +30,14 @@ const Education = () => {
           <div className="education-list">
             {education.map((edu, index) => (
               <div key={index} className="education-item card scroll-animate-left">
-                <div className="education-header">
-                  <div className="education-main">
-                    <h4 className="education-degree">{edu.degree}</h4>
-                    <p className="education-major">{edu.major}</p>
-                    <p className="education-institution">{edu.institution}</p>
-                  </div>
-                  <div className="education-right">
-                    <span className="education-period">{edu.period}</span>
-                    <span className="education-gpa">GPA: {edu.gpa}</span>
-                  </div>
+                <div className="education-main">
+                  <h4 className="education-degree">{edu.degree}</h4>
+                  <p className="education-major">{edu.major}</p>
+                  <p className="education-institution">{edu.institution}</p>
+                </div>
+                <div className="education-meta-bottom">
+                  <span className="education-period">{edu.period}</span>
+                  {edu.gpa && <span className="education-gpa">GPA: {edu.gpa}</span>}
                 </div>
               </div>
             ))}

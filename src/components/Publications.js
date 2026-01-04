@@ -145,18 +145,20 @@ const Publications = () => {
               onClick={() => toggleAbstract(index)}
               style={{ cursor: 'pointer' }}
             >
-              <div className="publication-header">
-                <span className="publication-year">{pub.year}</span>
+              <div className="publication-title-container">
+                <h3 className="publication-title">{pub.title}</h3>
                 <span className="expand-indicator">
                   {expandedPapers.has(index) ? '▼' : '▶'}
                 </span>
               </div>
-              <h3 className="publication-title">{pub.title}</h3>
               <p 
                 className="publication-authors"
                 dangerouslySetInnerHTML={{ __html: formatAuthors(pub.authors) }}
               ></p>
-              <p className="publication-venue">{pub.venue}</p>
+              <div className="publication-venue-container">
+                <p className="publication-venue">{pub.venue}</p>
+                <span className="publication-year">{pub.year}</span>
+              </div>
               {(
                 <p className={`publication-abstract${expandedPapers.has(index) ? '' : ' collapsed'}`}>{pub.abstract}</p>
               )}
