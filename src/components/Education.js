@@ -6,15 +6,13 @@ const Education = () => {
   const animationRef = useScrollAnimation();
   const education = [
     {
-      degree: "PhD Candidate",
-      major: "Computer Science",
+      degree: "Ph.D. Candidate in Computer Science",
       institution: "University of California, Santa Barbara",
-      period: "2020 - Current",
+      period: "2020 - Expected 2026",
       location: "Santa Barbara, CA",
     },
     {
-      degree: "Bachelor of Science",
-      major: "Computer Science",
+      degree: "B.S. in Computer Science",
       institution: "University of California, Santa Barbara",
       period: "2016 - 2020",
       location: "Santa Barbara, CA",
@@ -32,7 +30,6 @@ const Education = () => {
               <div key={index} className="education-item card scroll-animate-left">
                 <div className="education-main">
                   <h4 className="education-degree">{edu.degree}</h4>
-                  <p className="education-major">{edu.major}</p>
                   <p className="education-institution">{edu.institution}</p>
                 </div>
                 <div className="education-meta-bottom">

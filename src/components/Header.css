@@ -65,7 +65,7 @@
 
 @media (max-width: 768px) {
   .nav-brand h2 {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
   }
   
   .nav-menu {
@@ -75,9 +75,5 @@
     overflow-x: auto;
     max-width: 100vw;
     white-space: nowrap;
-  }
-  
-  .nav-brand h2 {
-    font-size: 1.25rem;
   }
 }

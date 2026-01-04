@@ -44,6 +44,15 @@ const Publications = () => {
       link: "https://doi.org/10.48550/arXiv.2312.10321"
     },
     {
+      id: "compiling-best-bits-2025",
+      title: "Compiling Just the Best Bits: Finding the Maximum Benefit Shared Subexpressions in a Query Workload",
+      authors: "Lawrence Lim, Laleh Aghababaie Beni, Garret Swart",
+      venue: "US Patent Application",
+      year: "2025",
+      abstract: "In a computer, each of many statement plan trees respectively represents a distinct database statement in a database workload. Each statement plan tree contains a distinct set of tree nodes. A first statement plan tree contains a first subtree and represents a first statement. A second statement plan tree contains a second subtree, and a third statement plan tree contains a third subtree. By agglomeration, a first cluster subplan is generated that represents the first subtree of the first statement plan tree and the second subtree of the second statement plan tree. By subsequent agglomeration, a second cluster subplan is generated that represents the third subtree of the third statement plan tree and the first cluster subplan. Execution of the first database statement uses the second cluster subplan for acceleration. Agglomeration may be decided based on novel net benefit estimation, novel inter-cluster distance, and a novel and tunable compilation cost.",
+      link: "https://patents.google.com/patent/US20250086176A1/en?oq=US20250086176A1"
+    },
+    {
       id: "quicker-2024",
       title: "QUICKeR: Quicker Updates Involving Continuous Key Rotation",
       authors: "Lawrence Lim, Wei-Yee Goh, Divyakant Agrawal, Amr El Abbadi, Trinabh Gupta",

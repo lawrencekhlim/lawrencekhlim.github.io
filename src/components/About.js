@@ -30,7 +30,7 @@ const About = () => {
               Hello there! I am a computer science PhD candidate at UC Santa Barbara. 
             </p>
             <p className="about-description">
-              My work spans across various domains including privacy, AI, human-computer interaction, compilers, and more. Recently, I have been interested on improving the security and privacy of Large Language Models by using homomorphic encryption to enable private inference. See my recent paper below!
+              My work spans across various domains including privacy, AI, human-computer interaction, compilers, and more. Recently, I have been interested on improving the security and privacy of Large Language Models by using homomorphic encryption to enable private inference. Check out my recent papers!
             </p>
             {/* <div className="about-stats">
               <div className="stat">
