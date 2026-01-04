@@ -22,7 +22,7 @@ function App() {
       </div>
       <footer className="footer-bar">
         <div className="container">
-          <p>&copy; 2025 Lawrence Lim. All rights reserved.</p>
+          <p>&copy; 2026 Lawrence Lim. All rights reserved.</p>
           <p>Built with React</p>
         </div>
       </footer>

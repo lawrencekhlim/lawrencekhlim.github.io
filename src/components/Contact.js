@@ -25,6 +25,20 @@ const Contact = () => {
       value: 'github.com/lawrencekhlim',
       link: 'https://github.com/lawrencekhlim',
       isImage: true
+    },
+    {
+      icon: '/resume.png',
+      label: 'Resume',
+      value: 'Download Resume',
+      link: '/Lawrence_Lim_Resume.pdf',
+      isImage: true
+    },
+    {
+      icon: '/google-scholar.png',
+      label: 'Google Scholar',
+      value: 'Google Scholar Link',
+      link: 'https://scholar.google.com/citations?user=Ov2WRIsAAAAJ',
+      isImage: true
     }
   ];
 
@@ -39,7 +53,7 @@ const Contact = () => {
         
         <div className="contact-content">
           <div className="contact-info scroll-animate-scale">
-            <h3>Contact Information</h3>
+            <h3>Links & Contact Information</h3>
             <div className="contact-list">
               {contactInfo.map((item, index) => (
                 <div key={index} className="contact-item scroll-animate">
