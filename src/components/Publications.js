@@ -8,6 +8,15 @@ const Publications = () => {
   
   const publications = [
     {
+      id: "private-llm-tutorial-edbt-2026",
+      title: "Private LLM Inference with Homomorphic Encryption",
+      authors: "Lawrence Lim, Divyakant Agrawal, Amr El Abbadi",
+      venue: "Proceedings on Extending Database Technology",
+      year: "2026",
+      abstract: "This tutorial introduces the emerging research area of private large language model (LLM) inference using Fully Homomorphic Encryption (FHE). It covers the basics of homomorphic encryption, key architectural details of transformer-based LLMs, and existing techniques for enabling end-to-end encrypted LLM inference. Finally, the tutorial concludes with open research questions and future directions in this rapidly evolving field.",
+      link: "https://openproceedings.org/2026/conf/edbt/paper-T1.pdf"
+    },
+    {
       id: "hyperion-2025",
       title: "Hyperion: Private Token Sampling with Homomorphic Encryption",
       authors: "Lawrence Lim, Jiaming Liu, Vikas Kalagi, Divyakant Agrawal, Amr El Abbadi",
