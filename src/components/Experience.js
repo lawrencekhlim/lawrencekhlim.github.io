@@ -26,16 +26,19 @@ const Experience = () => {
 
   const experiences = [
     {
-      title: "Graduate Student Researcher",
+      title: "Ph.D. Candidate",
       company: "University of California, Santa Barbara",
       period: "2020 - Present",
       location: "Santa Barbara, CA",
       description: [
-        "Enabled private inference of Large Language Models by translating every operation in a transformer model into equivalent CKKS homomorphic encryption operations: <a href='#tricycle-2025' class='internal-link'>Tricycle: Private Transformer Inference with Tricyclic Encodings (2025)</a>",
+        "Implemented an end-to-end private Large Language Model inference system by translating the transformer model into homomorphic encryption and developing novel algorithms and performance optimizations: <a href='#tricycle-2025' class='internal-link'>Tricycle: Private Transformer Inference with Tricyclic Encodings (2025)</a>",
+        "Developed a 100x more efficient private token sampling algorithm for privacy-preserving LLM systems, resulting in an accepted paper at a top AI conference: <a href='#hyperion-2026' class='internal-link'>Hyperion: Private Token Sampling with Homomorphic Encryption (ACL 2026)</a>",
         "Optimized key rotations by developing new protocols to eliminate race conditions while utilizing new updatable encryption primitives, resulting in an accepted research paper: <a href='#quicker-2024' class='internal-link'>QUICKeR: Quicker Updates Involving Continuous Key Rotation (PoPETS 2024)</a>",
-        "Developed a virtual reality application to spatialize music, resulting in an accepted paper at a top HCI conference: <a href='#spatializing-vr-2023' class='internal-link'>Spatializing Music in Virtual Reality (SUI 2023)</a>",
-        "Developed an augmented reality mobile application for spatial music, culminating in an accepted paper at a top HCI conference: <a href='#spatial-ar-2021' class='internal-link'>A Spatial Music Listening Experience in Augmented Reality (UIST 2021)</a>",
-        "Reduced workload imbalance for distributed system backends by developing a front end cache, leading to a paper: <a href='#cot-2021' class='internal-link'>Cache on Track (CoT): Decentralized Elastic Caches for Cloud Environments (EDBT 2021)</a>"
+        "Built augmented and virtual reality applications for spatialized music, resulting in accepted papers at top HCI conferences: <a href='#spatial-ar-2021' class='internal-link'>A Spatial Music Listening Experience in Augmented Reality (UIST 2021)</a> and <a href='#spatializing-vr-2023' class='internal-link'>Spatializing Music in Virtual Reality (SUI 2023)</a>",
+        // "Developed a virtual reality application to spatialize music, resulting in an accepted paper at a top HCI conference: <a href='#spatializing-vr-2023' class='internal-link'>Spatializing Music in Virtual Reality (SUI 2023)</a>",
+        // "Developed an augmented reality mobile application for spatial music, culminating in an accepted paper at a top HCI conference: <a href='#spatial-ar-2021' class='internal-link'>A Spatial Music Listening Experience in Augmented Reality (UIST 2021)</a>",
+        // "Reduced workload imbalance for distributed system backends by developing a front end cache, leading to a paper: <a href='#cot-2021' class='internal-link'>Cache on Track (CoT): Decentralized Elastic Caches for Cloud Environments (EDBT 2021)</a>"
+        "Led research teams, forged industry collaborations, mentored undergraduate and graduate students, and secured $200K+ in grant funding."
       ]
     },
     {
@@ -44,7 +47,7 @@ const Experience = () => {
       period: "Summer 2024",
       location: "Sunnyvale, CA",
       description: [
-        "Developed a pipeline in the <a href='https://github.com/google/heir' target='_blank' rel='noopener noreferrer'>HEIR compiler</a> to compile a Python machine learning models into CKKS homomorphic encryption, leading to a 3000x performance improvement over previous infrastructure and a research paper: <a href='#heir-2025' class='internal-link'>HEIR: A Universal Compiler for Homomorphic Encryption",
+        "Developed a pipeline in the <a href='https://github.com/google/heir' target='_blank' rel='noopener noreferrer'>HEIR compiler</a> to compile a Python machine learning models into CKKS homomorphic encryption, leading to a 3000x performance improvement over previous infrastructure and a research paper: <a href='#heir-2025' class='internal-link'>HEIR: A Universal Compiler for Homomorphic Encryption</a>",
         "Implemented optimized matrix multiplication FHE kernels, leading to a 6x performance improvement",
       ]
     },

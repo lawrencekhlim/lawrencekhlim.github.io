@@ -8,20 +8,11 @@ const Publications = () => {
   
   const publications = [
     {
-      id: "private-llm-tutorial-edbt-2026",
-      title: "Private LLM Inference with Homomorphic Encryption",
-      authors: "Lawrence Lim, Divyakant Agrawal, Amr El Abbadi",
-      venue: "Extending Database Technology",
-      year: "2026",
-      abstract: "This tutorial introduces the emerging research area of private large language model (LLM) inference using Fully Homomorphic Encryption (FHE). It covers the basics of homomorphic encryption, key architectural details of transformer-based LLMs, and existing techniques for enabling end-to-end encrypted LLM inference. Finally, the tutorial concludes with open research questions and future directions in this rapidly evolving field.",
-      link: "https://openproceedings.org/2026/conf/edbt/paper-T1.pdf"
-    },
-    {
-      id: "hyperion-2025",
+      id: "hyperion-2026",
       title: "Hyperion: Private Token Sampling with Homomorphic Encryption",
       authors: "Lawrence Lim, Jiaming Liu, Vikas Kalagi, Divyakant Agrawal, Amr El Abbadi",
-      venue: "Cryptology ePrint Archive",
-      year: "2025",
+      venue: "Association for Computational Linguistics (to appear)",
+      year: "2026",
       abstract: "A promising direction for enabling private queries to large language models (LLMs) is with homomorphic encryption (HE). An open problem is performing token sampling under HE. In this paper, we introduce Hyperion, an efficient HE algorithm for inverse transform sampling, enabling private token sampling with 1 comparison depth, O(1) amortized comparisons, and O(log n) rotations. We implement our approach and demonstrate that it samples tokens in 0.14 seconds for 32k tokens (4.4 microseconds per token) on GPU, achieving a 100x latency improvement over prior work.",
       link: "https://ia.cr/2025/2318"
     },
@@ -33,6 +24,15 @@ const Publications = () => {
       year: "2025",
       abstract: "The growing adoption of Large Language Models in privacy-sensitive domains necessitates secure inference mechanisms that preserve data confidentiality. Homomorphic encryption offers a promising pathway by enabling computation on encrypted inputs, yet existing approaches struggle to scale efficiently to full transformer models due to limitations in packing schemes, which must efficiently support a wide range of operations, including matrix multiplications, row-wise nonlinear operations, and self-attention. In this work, we present Tricycle, a framework for private transformer inference built on our novel packing scheme, called tricyclic encodings, which are designed to efficiently support these core operations. Tricyclic encodings are a generalization of bicyclic encodings, enabling privacy-preserving batch matrix multiplications with optimal multiplicative depth in order to facilitate parallelized multi-head self-attention. We optimize our matrix multiplications by incorporating Baby-Step Giant-Step optimizations to reduce ciphertext rotations and presenting new ciphertext-plaintext matrix multiplication techniques that relax prior limitations. A further contribution of our work is a lightweight and effective approach for stabilizing the softmax function via statistical max estimation. Our end-to-end implementation on a BERT-Tiny model shows that Tricycle achieves a 1.5x to 3x speedup over previous approaches, marking a step toward practical and scalable private LLM inference without sacrificing model fidelity.",
       link: "https://ia.cr/2025/1200"
+    },
+    {
+      id: "private-llm-tutorial-edbt-2026",
+      title: "Private LLM Inference with Homomorphic Encryption",
+      authors: "Lawrence Lim, Divyakant Agrawal, Amr El Abbadi",
+      venue: "Extending Database Technology",
+      year: "2026",
+      abstract: "This tutorial introduces the emerging research area of private large language model (LLM) inference using Fully Homomorphic Encryption (FHE). It covers the basics of homomorphic encryption, key architectural details of transformer-based LLMs, and existing techniques for enabling end-to-end encrypted LLM inference. Finally, the tutorial concludes with open research questions and future directions in this rapidly evolving field.",
+      link: "https://openproceedings.org/2026/conf/edbt/paper-T1.pdf"
     },
     {
       id: "heir-2025",

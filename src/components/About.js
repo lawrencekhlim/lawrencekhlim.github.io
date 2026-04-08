@@ -24,7 +24,7 @@ const About = () => {
           </div>
           <div className="about-text">
             <h1 className="about-title">Lawrence Lim</h1>
-            <h2 className="about-subtitle">Privacy & AI Researcher</h2>
+            <h2 className="about-subtitle">AI Privacy Researcher</h2>
             <p className="about-location">San Francisco Bay Area</p>
             <p className="about-description">
               Hello there! I am a computer science Ph.D. candidate at UC Santa Barbara in my final year. 
