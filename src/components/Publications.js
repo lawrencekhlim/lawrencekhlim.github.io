@@ -8,6 +8,15 @@ const Publications = () => {
   
   const publications = [
     {
+      id: "tricycle-2025",
+      title: "Tricycle: Private Transformer Inference with Tricyclic Encodings",
+      authors: "Lawrence Lim, Vikas Kalagi, Julia Novick, Jiaming Liu, Divyakant Agrawal, Amr El Abbadi",
+      venue: "Cryptology ePrint Archive",
+      year: "2025",
+      abstract: "he growing deployment of large language models (LLMs) in privacy-sensitive settings demands inference mechanisms that preserve data confidentiality. Homomorphic encryption (HE) offers a principled solution by enabling computation directly on encrypted data; however, existing solutions struggle to scale to full LLMs. We present Tricycle, a system for efficient private transformer inference. At its core, Tricycle introduces tricyclic encodings, a novel packing scheme that enables batch matrix multiplications with optimal multiplicative depth while naturally supporting multi-head attention. Building on this foundation, we develop a suite of optimizations, including Baby-Step Giant-Step optimizations, optimized block matrix multiplications, lazy relinearization, and free attention complexification, that collectively minimize key-switching operations and improve performance. We further introduce statistical max estimation, a lightweight method for stabilizing softmax under HE. We implement Tricycle end-to-end on a GPU-accelerated CKKS pipeline and evaluate it on BERT models. For BERT-Base with 128 tokens, Tricycle achieves 100.5 seconds latency on a single GPU, yielding 6x and 3.4x speedups over prior state-of-the-art systems, Thor and Powerformer, respectively. These results demonstrate that careful design of packing, algorithms, and systems can significantly reduce the cost of private LLM inference, bringing practical deployment closer to reality.",
+      link: "https://ia.cr/2025/1200"
+    },
+    {
       id: "hyperion-2026",
       title: "Hyperion: Private Token Sampling with Homomorphic Encryption",
       authors: "Lawrence Lim, Jiaming Liu, Vikas Kalagi, Divyakant Agrawal, Amr El Abbadi",
@@ -15,15 +24,6 @@ const Publications = () => {
       year: "2026",
       abstract: "A promising direction for enabling private queries to large language models (LLMs) is with homomorphic encryption (HE). An open problem is performing token sampling under HE. In this paper, we introduce Hyperion, an efficient HE algorithm for inverse transform sampling, enabling private token sampling with 1 comparison depth, O(1) amortized comparisons, and O(log n) rotations. We implement our approach and demonstrate that it samples tokens in 0.14 seconds for 32k tokens (4.4 microseconds per token) on GPU, achieving a 100x latency improvement over prior work.",
       link: "https://ia.cr/2025/2318"
-    },
-    {
-      id: "tricycle-2025",
-      title: "Tricycle: Private Transformer Inference with Tricyclic Encodings",
-      authors: "Lawrence Lim, Vikas Kalagi, Divyakant Agrawal, Amr El Abbadi",
-      venue: "Cryptology ePrint Archive",
-      year: "2025",
-      abstract: "The growing adoption of Large Language Models in privacy-sensitive domains necessitates secure inference mechanisms that preserve data confidentiality. Homomorphic encryption offers a promising pathway by enabling computation on encrypted inputs, yet existing approaches struggle to scale efficiently to full transformer models due to limitations in packing schemes, which must efficiently support a wide range of operations, including matrix multiplications, row-wise nonlinear operations, and self-attention. In this work, we present Tricycle, a framework for private transformer inference built on our novel packing scheme, called tricyclic encodings, which are designed to efficiently support these core operations. Tricyclic encodings are a generalization of bicyclic encodings, enabling privacy-preserving batch matrix multiplications with optimal multiplicative depth in order to facilitate parallelized multi-head self-attention. We optimize our matrix multiplications by incorporating Baby-Step Giant-Step optimizations to reduce ciphertext rotations and presenting new ciphertext-plaintext matrix multiplication techniques that relax prior limitations. A further contribution of our work is a lightweight and effective approach for stabilizing the softmax function via statistical max estimation. Our end-to-end implementation on a BERT-Tiny model shows that Tricycle achieves a 1.5x to 3x speedup over previous approaches, marking a step toward practical and scalable private LLM inference without sacrificing model fidelity.",
-      link: "https://ia.cr/2025/1200"
     },
     {
       id: "private-llm-tutorial-edbt-2026",
