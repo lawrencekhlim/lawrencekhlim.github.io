@@ -27,10 +27,10 @@ const About = () => {
             <h2 className="about-subtitle">AI Privacy Researcher</h2>
             <p className="about-location">San Francisco Bay Area</p>
             <p className="about-description">
-              Hello there! I am a computer science Ph.D. candidate at UC Santa Barbara in my final year. I'm advised by Professors Divyakant Agrawal and Amr El Abbadi.
+              Hello there! I just defended my Ph.D. in Computer Science at UC Santa Barbara. I'm advised by Professors Divyakant Agrawal and Amr El Abbadi.
             </p>
             <p className="about-description">
-              My work spans across various domains including privacy, AI, human-computer interaction, compilers, and more. Recently, I have been interested on improving the security and privacy of Large Language Models by using homomorphic encryption to enable private inference. Check out my recent papers!
+              My work spans across various domains including privacy, AI, human-computer interaction, compilers, and more. Recently, I have been interested on improving the security and privacy of Large Language Models by using homomorphic encryption to enable private inference. I've given several talks on this topic and others at various research conferences (PETS 2024, Socal DB Day 2025, EDBT 2026) and companies. Check out my recent papers!
             </p>
             {/* <div className="about-stats">
               <div className="stat">

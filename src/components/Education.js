@@ -6,9 +6,9 @@ const Education = () => {
   const animationRef = useScrollAnimation();
   const education = [
     {
-      degree: "Ph.D. Candidate in Computer Science",
+      degree: "Ph.D. in Computer Science",
       institution: "University of California, Santa Barbara",
-      period: "2020 - Expected 2026",
+      period: "2020 - 2026",
       location: "Santa Barbara, CA",
     },
     {

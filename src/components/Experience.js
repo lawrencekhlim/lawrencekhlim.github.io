@@ -26,9 +26,9 @@ const Experience = () => {
 
   const experiences = [
     {
-      title: "Ph.D. Candidate",
+      title: "Ph.D. in Computer Science",
       company: "University of California, Santa Barbara",
-      period: "2020 - Present",
+      period: "2020 - 2026",
       location: "Santa Barbara, CA",
       description: [
         "Implemented an end-to-end private Large Language Model inference system by translating the transformer model into homomorphic encryption and developing novel algorithms and performance optimizations: <a href='#tricycle-2025' class='internal-link'>Tricycle: Private Transformer Inference with Tricyclic Encodings (2025)</a>",
