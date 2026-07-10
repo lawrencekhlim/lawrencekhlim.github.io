@@ -20,10 +20,10 @@ const Publications = () => {
       id: "hyperion-2026",
       title: "Hyperion: Private Token Sampling with Homomorphic Encryption",
       authors: "Lawrence Lim, Jiaming Liu, Vikas Kalagi, Divyakant Agrawal, Amr El Abbadi",
-      venue: "Association for Computational Linguistics (to appear)",
+      venue: "Association for Computational Linguistics",
       year: "2026",
       abstract: "A promising direction for enabling private queries to large language models (LLMs) is with homomorphic encryption (HE). An open problem is performing token sampling under HE. In this paper, we introduce Hyperion, an efficient HE algorithm for inverse transform sampling, enabling private token sampling with 1 comparison depth, O(1) amortized comparisons, and O(log n) rotations. We implement our approach and demonstrate that it samples tokens in 0.14 seconds for 32k tokens (4.4 microseconds per token) on GPU, achieving a 100x latency improvement over prior work.",
-      link: "https://ia.cr/2025/2318"
+      link: "https://doi.org/10.18653/v1/2026.acl-long.644"
     },
     {
       id: "private-llm-tutorial-edbt-2026",
