@@ -1,33 +1,37 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import Header from './components/Header';
-import About from './components/About';
-import Experience from './components/Experience';
+import About, { Profile } from './components/About';
+import News from './components/News';
 import Publications from './components/Publications';
-import Education from './components/Education';
-import Contact from './components/Contact';
+// import Experience from './components/Experience';
+import Resume from './components/Resume';
+import publications from './data/publications';
 
-function App() {
-  return (
-    <div className="App">
-      <Header />
-      <div className="left-column">
-        <About />
-        <Education />
-        <Contact />
-      </div>
-      <div className="right-column">
-        <Publications />
-        <Experience />
-      </div>
-      <footer className="footer-bar">
-        <div className="container">
-          <p>&copy; 2026 Lawrence Lim. All rights reserved.</p>
-          <p>Built with React</p>
-        </div>
-      </footer>
+export default function App() {
+  const [hash, setHash] = useState(window.location.hash);
+  const paperId = hash.slice(1);
+  const showResume = hash === '#resume';
+  const showPublications = hash === '#publications' || publications.some(p => p.id === paperId);
+  useEffect(() => {
+    const navigate = () => setHash(window.location.hash);
+    window.addEventListener('hashchange', navigate);
+    return () => window.removeEventListener('hashchange', navigate);
+  }, []);
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => {
+      if (hash === '#resume' || hash === '#publications') window.scrollTo(0, 0);
+      else document.getElementById(hash.slice(1) || 'about')?.scrollIntoView();
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [hash]);
+  return <>
+    <a className="skip-link" href="#main">Skip to content</a>
+    <Header />
+    <div className={showResume ? 'resume-layout' : 'page-layout'}>
+      {!showResume && <Profile />}
+      <main id="main">{showResume ? <Resume /> : showPublications ? <Publications showAll /> : <><About /><News /><Publications />{/* <Experience /> */}</>}</main>
     </div>
-  );
+    <footer className="site-footer">© 2026 Lawrence Lim</footer>
+  </>;
 }
-
-export default App;

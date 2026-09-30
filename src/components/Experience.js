@@ -1,5 +1,4 @@
 import React from 'react';
-import './Experience.css';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const Experience = () => {
@@ -57,7 +56,7 @@ const Experience = () => {
       period: "Summer 2021, Summer 2022",
       location: "Redwood City, CA",
       description: [
-        "Conducted research on optimizing for net benefit of query plan native compilation by modeling compilation benefit and clustering to group similar query plans, leading to a first author patent: <a href='#compiling-best-bits-2025' class='internal-link'>Compiling Just the Best Bits: Finding the Maximum Benefit Shared Subexpressions in a Query Workload",
+        "Conducted research on optimizing for net benefit of query plan native compilation by modeling compilation benefit and clustering to group similar query plans, leading to a first author patent: <a href='#compiling-best-bits-2025' class='internal-link'>Compiling Just the Best Bits: Finding the Maximum Benefit Shared Subexpressions in a Query Workload</a>",
       ]
     },
     {
