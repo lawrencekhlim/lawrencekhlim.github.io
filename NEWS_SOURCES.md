@@ -5,7 +5,7 @@ Acceptance months use the official notification schedule as requested, rather th
 - ACL: April 4, 2026 notification; July 2026 conference. https://2026.aclweb.org/
 - VLDB tutorial: June 2026 acceptance, confirmed by Lawrence; this supersedes the scheduled May 30 notification. https://www.vldb.org/2026/call-for-tutorials.html
 - VLDB talk: September 2026, Tutorial 10. https://vldb.org/2026/program.html
-- EDBT tutorial: February 4, 2026 notification; March conference. https://edbticdt2026.github.io/contents/call_for_tutorials.html
+- EDBT tutorial: January 2026 acceptance, confirmed by Lawrence; this supersedes the scheduled February 4 notification. March conference. https://edbticdt2026.github.io/contents/call_for_tutorials.html
 - IEEE BigData: October 2025 notification. https://bigdataieee.org/BigData2025/ImportantDates.html
 - HEIR: August 2025 preprint (not conference acceptance). https://arxiv.org/abs/2508.11095
 - SoCal DB Day: May 9, 2025. https://isg.ics.uci.edu/news/welcome-to-attend-the-southern-california-database-day-on-may-9-2025-read-more/
