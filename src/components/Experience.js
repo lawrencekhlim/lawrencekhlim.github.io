@@ -31,7 +31,7 @@ const Experience = () => {
       period: "2020 - 2026",
       location: "Santa Barbara, CA",
       description: [
-        "Implemented an end-to-end private Large Language Model inference system by translating the transformer model into homomorphic encryption and developing novel algorithms and performance optimizations: <a href='#tricycle-2025' class='internal-link'>Tricycle: Private Transformer Inference with Tricyclic Encodings (2025)</a>",
+        "Implemented an end-to-end private Large Language Model inference system by translating the transformer model into homomorphic encryption and developing novel algorithms and performance optimizations: <a href='#tricycle-2025' class='internal-link'>Tricycle: Private Transformer Inference with Tricyclic Encodings (CCS 2026)</a>",
         "Developed a 100x more efficient private token sampling algorithm for privacy-preserving LLM systems, resulting in an accepted paper at a top AI conference: <a href='#hyperion-2026' class='internal-link'>Hyperion: Private Token Sampling with Homomorphic Encryption (ACL 2026)</a>",
         "Optimized key rotations by developing new protocols to eliminate race conditions while utilizing new updatable encryption primitives, resulting in an accepted research paper: <a href='#quicker-2024' class='internal-link'>QUICKeR: Quicker Updates Involving Continuous Key Rotation (PoPETS 2024)</a>",
         "Built augmented and virtual reality applications for spatialized music, resulting in accepted papers at top HCI conferences: <a href='#spatial-ar-2021' class='internal-link'>A Spatial Music Listening Experience in Augmented Reality (UIST 2021)</a> and <a href='#spatializing-vr-2023' class='internal-link'>Spatializing Music in Virtual Reality (SUI 2023)</a>",
