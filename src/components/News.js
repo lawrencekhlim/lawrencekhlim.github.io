@@ -3,6 +3,7 @@ import React from 'react';
 // Notification months follow official conference schedules; see NEWS_SOURCES.md.
 // CCS, VLDB, EDBT tutorial, and CoT acceptance months were confirmed by Lawrence.
 const news = [
+  ['Oct 2026', <>I started work at <strong>JP Morgan Chase</strong>.</>],
   ['Sep 2026', <>Our paper <a href="#tricycle-2025">Tricycle: Private Transformer Inference with Tricyclic Encodings</a> was accepted to <strong>CCS 2026</strong>!</>],
   ['Sep 2026', <>Gave a tutorial on <a href="#private-llm-tutorial-vldb-2026">Private LLM Inference with Homomorphic Encryption</a> at <strong>VLDB 2026</strong>.</>],
   ['Jul 2026', <>Presented <a href="#hyperion-2026">Hyperion: Private Token Sampling with Homomorphic Encryption</a> at <strong>ACL 2026</strong>.</>],

@@ -24,7 +24,7 @@ const publications = [
       venue: "Very Large Databases (VLDB)",
       year: "2026",
       abstract: "This tutorial introduces the emerging research area of private large language model (LLM) inference using Fully Homomorphic Encryption (FHE). It covers the basics of homomorphic encryption, key architectural details of transformer-based LLMs, and existing techniques for enabling end-to-end encrypted LLM inference. Finally, the tutorial concludes with open research questions and future directions in this rapidly evolving field.",
-      link: "https://dl.acm.org/doi/10.14778/3827998.3828152"
+      link: "https://www.vldb.org/pvldb/vol19/p4927-lim.pdf"
     },
     {
       id: "private-llm-tutorial-edbt-2026",
