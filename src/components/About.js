@@ -22,6 +22,6 @@ export default function About() {
     <h1>Hi, I’m Lawrence</h1>
     <p>I recently defended my Ph.D. in Computer Science at UC Santa Barbara, where I’m advised by Professors Divyakant Agrawal and Amr El Abbadi.</p>
     <p>My research focuses on <strong>security and privacy for large language models</strong>. I use <strong>homomorphic encryption</strong> to build systems that run inference on encrypted data, bringing private AI closer to practical use.</p>
-    <p>My work also spans compilers, databases, and human-computer interaction. I’ve interned at Google and Oracle, and presented my research at conferences (PETS 2024, Socal DB Day 2025, EDBT 2026, ACL 2026, VLDB 2026).</p>
+    <p>My work also spans compilers, databases, and human-computer interaction. I’ve interned at Google and Oracle, and presented my research at conferences (PETS 2024, Socal DB Day 2025, EDBT 2026, ACL 2026, VLDB 2026, CCS 2026).</p>
   </section>;
 }
