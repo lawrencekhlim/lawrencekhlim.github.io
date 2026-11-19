@@ -1,6 +1,7 @@
 import React from 'react';
 
 const news = [
+  ['Nov 2026', <>Presented <a href="#tricycle-2025">Tricycle: Private Transformer Inference with Tricyclic Encodings</a> at <strong>CCS 2026</strong>.</>],
   ['Oct 2026', <>I started work at <strong>JP Morgan Chase</strong> as a Lead Security Engineer, VP.</>],
   ['Sep 2026', <>Our paper <a href="#tricycle-2025">Tricycle: Private Transformer Inference with Tricyclic Encodings</a> was accepted to <strong>CCS 2026</strong>!</>],
   ['Sep 2026', <>Gave a tutorial on <a href="#private-llm-tutorial-vldb-2026">Private LLM Inference with Homomorphic Encryption</a> at <strong>VLDB 2026</strong>.</>],
